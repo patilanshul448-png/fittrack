@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101329">
+  <meta name="description" content="FitTrack — your private, offline-first fitness and lifestyle companion.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <title>FitTrack — Fitness &amp; Lifestyle</title>
+  <style>
+:root{--bg:#0b0e1c;--panel:#14182b;--panel2:#1b2038;--text:#f2f3ff;--muted:#a5abc8;--line:#2b3150;--accent:#a78bfa;--accent2:#7c5ce7;--good:#72dfb1;--warn:#f5ca7b;--danger:#ff8b9b;--shadow:0 12px 32px #0003}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at top right,#29204d 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{max-width:1180px;margin:auto;padding:0 14px 100px}.topbar{position:sticky;top:0;z-index:5;margin:0 -14px;padding:12px 16px;background:#0b0e1ceF;backdrop-filter:blur(16px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:-.5px;font-size:20px}.logo{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;font-weight:900}.date-label{font-size:12px;color:var(--muted)}.header-actions{display:flex;gap:8px;align-items:center}.iconbtn,.btn,.navbtn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:12px;padding:10px 13px;min-height:42px}.btn.primary{background:linear-gradient(135deg,var(--accent2),var(--accent));border:0;color:white;font-weight:750}.btn.ghost{background:transparent}.btn.danger{border-color:#75404d;color:#ffb0ba}.btn.small{padding:7px 10px;min-height:34px;font-size:13px}.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}.layout{display:grid;grid-template-columns:210px minmax(0,1fr);gap:18px;margin-top:18px}.sidebar{position:sticky;top:76px;align-self:start;background:var(--panel);border:1px solid var(--line);padding:10px;border-radius:18px;max-height:calc(100vh - 95px);overflow:auto}.navbtn{display:flex;width:100%;gap:11px;align-items:center;text-align:left;margin:3px 0;background:transparent;border-color:transparent;color:var(--muted);padding:11px}.navbtn.active{background:var(--panel2);border-color:var(--line);color:var(--text)}.navbtn span:first-child{width:23px;text-align:center}.content{min-width:0}.section{display:none}.section.active{display:block;animation:fade .18s ease}@keyframes fade{from{opacity:.5;transform:translateY(3px)}to{opacity:1;transform:none}}h1{font-size:clamp(24px,4vw,32px);line-height:1.2;letter-spacing:-.8px;margin:4px 0 8px}h2{font-size:19px;margin:0 0 12px;letter-spacing:-.3px}h3{font-size:15px;margin:0 0 8px}p{margin:6px 0;color:var(--muted)}.subhead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:6px 0 18px}.subhead p{max-width:650px}.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:13px;margin-bottom:14px}.card{grid-column:span 12;background:linear-gradient(145deg,var(--panel),color-mix(in srgb,var(--panel) 84%,var(--accent) 16%));border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);min-width:0}.span3{grid-column:span 3}.span4{grid-column:span 4}.span5{grid-column:span 5}.span6{grid-column:span 6}.span7{grid-column:span 7}.span8{grid-column:span 8}.span9{grid-column:span 9}.metric{font-size:27px;font-weight:850;letter-spacing:-1px;margin:6px 0}.metric small{font-size:13px;color:var(--muted);font-weight:600;letter-spacing:0}.eyebrow{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:750}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.between{display:flex;align-items:center;justify-content:space-between;gap:10px}.muted{color:var(--muted)}.tiny{font-size:12px}.pill{display:inline-flex;align-items:center;border-radius:99px;background:var(--panel2);border:1px solid var(--line);padding:4px 9px;font-size:12px;color:var(--muted)}.progress{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:10px 0}.progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:99px;transition:width .2s}.field{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1}label{font-size:12px;color:var(--muted);font-weight:650}input,select,textarea{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:11px;padding:11px 12px;min-height:42px}textarea{min-height:85px;resize:vertical}.fields{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}.fields>.field{min-width:120px}.checkrow{display:flex;gap:9px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}.checkrow:last-child{border:0}.checkrow input{width:18px;height:18px;min-height:0;accent-color:var(--accent)}.checkrow label{font-size:14px;color:var(--text);font-weight:550;flex:1}.item{padding:12px 0;border-bottom:1px solid var(--line)}.item:last-child{border-bottom:0}.item p{font-size:13px}.empty{padding:18px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:13px}.notice{border:1px solid #68552b;background:#2a2518;color:#f5d99a;border-radius:13px;padding:11px 13px;font-size:13px;margin:10px 0}.notice.info{border-color:var(--line);background:var(--panel2);color:var(--muted)}.notice.good{border-color:#245d4a;background:#142d27;color:#a6f0d0}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.tab{border:1px solid var(--line);background:transparent;color:var(--muted);padding:8px 12px;border-radius:99px}.tab.active{background:var(--accent2);color:#fff;border-color:transparent}.chart{width:100%;height:170px;display:block}.daygrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.day{min-height:56px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--text);padding:5px;font-size:12px;display:flex;flex-direction:column;justify-content:space-between;text-align:left}.day .dot{width:5px;height:5px;background:var(--good);border-radius:50%;display:inline-block;margin-right:3px}.day.selected{outline:2px solid var(--accent)}.day.today{border-color:var(--accent)}.day.mutedday{opacity:.4}.bottomnav{display:none}.divider{height:1px;background:var(--line);margin:14px 0}.footer{color:var(--muted);font-size:12px;text-align:center;padding:25px 10px}.hide{display:none!important}.food-results{max-height:210px;overflow:auto;margin:8px 0}.food-option{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;text-align:left;padding:9px;border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:10px;margin:5px 0}.tag{font-size:11px;color:var(--muted)}.exercise-meta{font-size:12px;color:var(--muted)}.session-panel{background:linear-gradient(135deg,color-mix(in srgb,var(--accent2) 25%,var(--panel)),var(--panel2));border:1px solid var(--line);border-radius:16px;padding:15px;margin:12px 0 16px}.session-panel .metric{font-size:30px}.session-panel .row{margin-top:10px}.weekstrip{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.weekstrip div{background:var(--panel2);border-radius:10px;padding:10px 4px;text-align:center;font-size:12px}.weekstrip b{display:block;font-size:17px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:11px 16px;border-radius:12px;box-shadow:var(--shadow);z-index:20;max-width:90%;font-weight:700}.smallchart{font-size:12px;color:var(--muted)}.modalback{position:fixed;inset:0;background:#0009;z-index:30;display:grid;place-items:center;padding:16px}.modal{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px;max-width:460px;width:100%}
+body[data-theme="light"]{--bg:#f4f5fb;--panel:#fff;--panel2:#edf0fa;--text:#1c2040;--muted:#68708e;--line:#d9deee;--accent:#7254d8;--accent2:#5a3dc4;--shadow:0 8px 24px #1c204012;background:var(--bg)}
+body[data-theme="forest"]{--bg:#091a17;--panel:#102620;--panel2:#19382e;--text:#edf9f1;--muted:#a4c4b4;--line:#2a4d40;--accent:#70d7a2;--accent2:#2d9c72}
+body[data-theme="rose"]{--bg:#1b101b;--panel:#281829;--panel2:#3b2138;--text:#fff0fb;--muted:#d0aec8;--line:#573752;--accent:#f0a2d4;--accent2:#c05b9b}
+body[data-theme="ocean"]{--bg:#081721;--panel:#102531;--panel2:#173849;--text:#effaff;--muted:#a6c9d9;--line:#2b4e60;--accent:#68d4e8;--accent2:#3186d5}
+
+/* Expanded theme collection — includes several red combinations */
+body[data-theme="crimson"]{--bg:#10090c;--panel:#1e1015;--panel2:#32151f;--text:#fff1f3;--muted:#d0a7af;--line:#5b2633;--accent:#ff334f;--accent2:#b5122b;background:radial-gradient(ellipse at top right,#4c101e 0,transparent 42%),var(--bg)}
+body[data-theme="ruby"]{--bg:#19070b;--panel:#2a0d14;--panel2:#43111d;--text:#fff2f4;--muted:#e0a9b3;--line:#6c2333;--accent:#ff5c78;--accent2:#d20f3c;background:radial-gradient(ellipse at top right,#66132a 0,transparent 40%),var(--bg)}
+body[data-theme="ember"]{--bg:#170b08;--panel:#28130e;--panel2:#432015;--text:#fff4ec;--muted:#d8b09c;--line:#633323;--accent:#ff6542;--accent2:#d93619;background:radial-gradient(ellipse at top right,#702411 0,transparent 40%),var(--bg)}
+body[data-theme="cherry"]{--bg:#180b12;--panel:#29121e;--panel2:#42182b;--text:#fff2f8;--muted:#dcb0c5;--line:#63304a;--accent:#ff4f86;--accent2:#c51d58;background:radial-gradient(ellipse at top right,#59152e 0,transparent 42%),var(--bg)}
+body[data-theme="bloodmoon"]{--bg:#09090d;--panel:#171318;--panel2:#2a1a22;--text:#f9f3f5;--muted:#bba8b0;--line:#49303b;--accent:#ef233c;--accent2:#8d091b;background:radial-gradient(ellipse at top right,#420b18 0,transparent 42%),var(--bg)}
+body[data-theme="carbon"]{--bg:#0b0d10;--panel:#171a20;--panel2:#242932;--text:#f6f7fb;--muted:#a8afb9;--line:#3b414b;--accent:#ff3b45;--accent2:#c41622;background:radial-gradient(ellipse at top right,#381015 0,transparent 40%),var(--bg)}
+body[data-theme="sunset"]{--bg:#17101b;--panel:#24182a;--panel2:#39213b;--text:#fff5f0;--muted:#d0b4c9;--line:#5a3656;--accent:#ff8a5b;--accent2:#e34d76;background:radial-gradient(ellipse at top right,#71314b 0,transparent 42%),var(--bg)}
+body[data-theme="gold"]{--bg:#10100d;--panel:#1c1b15;--panel2:#302b1d;--text:#fff9e8;--muted:#c7bea0;--line:#50462b;--accent:#f4c95d;--accent2:#b98b22;background:radial-gradient(ellipse at top right,#443516 0,transparent 42%),var(--bg)}
+body[data-theme="arctic"]{--bg:#09141d;--panel:#112330;--panel2:#1a3445;--text:#f1fbff;--muted:#a9c7d8;--line:#2d5267;--accent:#8be4ff;--accent2:#358ac5;background:radial-gradient(ellipse at top right,#153f5b 0,transparent 42%),var(--bg)}
+body[data-theme="midnight"]{--bg:#080e20;--panel:#101a32;--panel2:#1a2947;--text:#f2f5ff;--muted:#a7b6d6;--line:#2b4068;--accent:#709bff;--accent2:#4259db;background:radial-gradient(ellipse at top right,#1d2c67 0,transparent 42%),var(--bg)}
+body[data-theme="mint"]{--bg:#081712;--panel:#10251e;--panel2:#19372d;--text:#edfff7;--muted:#a7cbbd;--line:#2b5947;--accent:#72f0bd;--accent2:#25a878;background:radial-gradient(ellipse at top right,#174b37 0,transparent 42%),var(--bg)}
+body[data-theme="lavender"]{--bg:#141020;--panel:#211a33;--panel2:#302546;--text:#faf5ff;--muted:#c2b3d9;--line:#4b3b67;--accent:#d4b5ff;--accent2:#8d5be8;background:radial-gradient(ellipse at top right,#3c245f 0,transparent 42%),var(--bg)}
+body[data-theme="amethyst"]{--bg:#10091b;--panel:#1e1230;--panel2:#301b49;--text:#f9f1ff;--muted:#c4a9df;--line:#51336d;--accent:#c084fc;--accent2:#9333ea;background:radial-gradient(ellipse at top right,#47216d 0,transparent 42%),var(--bg)}
+body[data-theme="copper"]{--bg:#14100e;--panel:#241b17;--panel2:#382820;--text:#fff5ed;--muted:#c9b1a3;--line:#5a4032;--accent:#e7a06b;--accent2:#b96535;background:radial-gradient(ellipse at top right,#50301b 0,transparent 42%),var(--bg)}
+body[data-theme="neon"]{--bg:#080c12;--panel:#111a22;--panel2:#1b2a35;--text:#f0fff9;--muted:#a5c2c5;--line:#2b4b50;--accent:#5cffc4;--accent2:#00a9b7;background:radial-gradient(ellipse at top right,#10443f 0,transparent 42%),var(--bg)}
+body[data-theme="sand"]{--bg:#19140e;--panel:#282117;--panel2:#3a3021;--text:#fff8e9;--muted:#c9bda5;--line:#5b4c35;--accent:#e8c78c;--accent2:#b68a4d;background:radial-gradient(ellipse at top right,#514026 0,transparent 42%),var(--bg)}
+body[data-theme="slate"]{--bg:#101317;--panel:#1a2027;--panel2:#272f39;--text:#f4f7fa;--muted:#b0bbc6;--line:#414c59;--accent:#b4c4d4;--accent2:#657b91;background:radial-gradient(ellipse at top right,#293b4d 0,transparent 42%),var(--bg)}
+body[data-theme="lime"]{--bg:#10150a;--panel:#1b2411;--panel2:#29371a;--text:#f8ffe9;--muted:#bacb9e;--line:#45582c;--accent:#c4f15b;--accent2:#79b82c;background:radial-gradient(ellipse at top right,#3a5016 0,transparent 42%),var(--bg)}
+body[data-theme="plum"]{--bg:#160d18;--panel:#241528;--panel2:#38203d;--text:#fff3ff;--muted:#c8adc9;--line:#56345b;--accent:#e3a1f5;--accent2:#a54fc2;background:radial-gradient(ellipse at top right,#4c2454 0,transparent 42%),var(--bg)}
+body[data-theme="teal"]{--bg:#071615;--panel:#102422;--panel2:#193634;--text:#effffc;--muted:#a8c9c4;--line:#2b514e;--accent:#66e6d2;--accent2:#198f91;background:radial-gradient(ellipse at top right,#14514e 0,transparent 42%),var(--bg)}
+
+@media(max-width:800px){.layout{display:block}.sidebar{display:none}.bottomnav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:10;justify-content:space-around;gap:2px;background:#0b0e1cf2;border-top:1px solid var(--line);padding:7px 4px max(7px,env(safe-area-inset-bottom));backdrop-filter:blur(18px)}body[data-theme="light"] .bottomnav{background:#ffffffed}.bottomnav button{flex:1;background:transparent;border:0;color:var(--muted);padding:7px 1px;border-radius:10px;font-size:10px;min-width:0}.bottomnav button b{display:block;font-size:18px;line-height:1.3}.bottomnav button.active{color:var(--accent);background:var(--panel2)}.app{padding:0 12px 92px}.topbar{margin:0 -12px;padding:10px 12px}.brand{font-size:18px}.header-actions .btn{padding:8px 10px}.span3,.span4,.span5,.span6,.span7,.span8,.span9{grid-column:span 6}.subhead{align-items:start;flex-direction:column}.card{padding:14px}.metric{font-size:24px}}
+@media(max-width:430px){.span3,.span4,.span5,.span6,.span7,.span8,.span9{grid-column:span 12}.metric{font-size:26px}.header-actions .hide-mobile{display:none}.day{min-height:48px;padding:4px;font-size:11px}.fields>.field{min-width:calc(50% - 8px)}}
+
+/* Modern gym tracker refresh */
+:root{--accent:#c4b5fd;--accent2:#7c3aed;--good:#4ade80}
+.section .subhead h1{font-size:clamp(27px,4vw,36px);letter-spacing:-1px}
+#workout .card{border-radius:22px}
+#workout .span8{background:linear-gradient(160deg,color-mix(in srgb,var(--accent2) 10%,var(--panel)),var(--panel))}
+.session-panel{border-radius:22px;padding:18px;background:linear-gradient(135deg,#25174a,#171a30 72%);border:1px solid #59429b;box-shadow:0 14px 34px #0003}
+.session-panel .metric{font-size:clamp(34px,6vw,48px);font-weight:900;letter-spacing:-1.5px;font-variant-numeric:tabular-nums}
+.session-panel .eyebrow{color:#c4b5fd;text-transform:uppercase;letter-spacing:1.4px;font-size:11px;font-weight:850}
+.session-panel .pill{background:#30225a;border-color:#59429b}
+.exercise-card{display:grid;grid-template-columns:1fr;gap:10px;margin:12px 0;padding:15px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,var(--panel2),color-mix(in srgb,var(--panel) 85%,#22133f));}
+.exercise-top{display:flex;align-items:flex-start;gap:11px}
+.exercise-number{width:38px;height:38px;flex:0 0 38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent2),var(--accent));font-weight:900;color:white}
+.exercise-title{font-size:16px;font-weight:850;line-height:1.25}
+.exercise-meta{font-size:12px;color:var(--muted);margin-top:4px}
+.exercise-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.exercise-controls .field{min-width:0}
+.exercise-controls input{width:100%;min-width:0;padding:9px;border-radius:10px}
+.exercise-controls label{font-size:11px;color:var(--muted)}
+.exercise-done{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.exercise-done .btn{flex:1}
+.rest-panel{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px;border-radius:14px;background:#111426;border:1px solid var(--line);margin:12px 0}
+.rest-clock{font-size:26px;font-weight:900;font-variant-numeric:tabular-nums}
+#workout .btn{font-weight:750}
+@media(min-width:700px){.exercise-card{grid-template-columns:minmax(0,1fr) 260px;align-items:center}.exercise-top{grid-column:1}.exercise-controls{grid-column:2;grid-row:1}.exercise-done{grid-column:1/-1}}
+
+
+/* Mobile-first layout cleanup: one clear card per row, roomy sections, usable navigation */
+@media (max-width: 800px){
+  html{scroll-behavior:auto}
+  .app{max-width:100%;padding:0 14px calc(104px + env(safe-area-inset-bottom))}
+  .layout{display:block;margin-top:12px}
+  .content{width:100%;min-width:0}
+  .section{width:100%;min-width:0}
+  .section.active{display:block}
+  .subhead{display:block;margin:10px 0 20px}
+  .subhead .pill,.subhead>.btn{margin-top:10px}
+  .grid{display:flex;flex-direction:column;gap:14px;margin-bottom:18px}
+  .grid>.card,.card,.span3,.span4,.span5,.span6,.span7,.span8,.span9,.span12{width:100%;max-width:100%;grid-column:auto;min-width:0}
+  .card{padding:17px;border-radius:18px;margin:0}
+  .section h1{font-size:29px;margin-bottom:7px}
+  .section h2{font-size:18px;margin-bottom:12px}
+  .fields{display:flex;flex-direction:column;gap:10px}
+  .fields>.field{width:100%;min-width:0}
+  .row,.between{align-items:stretch;gap:9px}
+  .row>.btn,.between>.btn{max-width:100%}
+  .session-panel{padding:16px;margin:14px 0 18px}
+  .bottomnav{justify-content:flex-start;overflow-x:auto;overflow-y:hidden;gap:4px;padding:8px 8px calc(8px + env(safe-area-inset-bottom));scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .bottomnav::-webkit-scrollbar{display:none}
+  .bottomnav button{flex:0 0 70px;width:70px;min-width:70px;min-height:54px;font-size:10px;white-space:nowrap;padding:6px 2px}
+  .bottomnav button b{font-size:19px;margin-bottom:2px}
+  .topbar{position:sticky;margin:0 -14px;padding:10px 14px;gap:8px}
+  .brand{font-size:17px;gap:8px}
+  .logo{width:33px;height:33px;flex:0 0 33px}
+  .date-label{font-size:11px}
+  .header-actions{gap:5px}
+  .header-actions .btn{min-height:38px;padding:7px 9px;font-size:12px}
+  input,select,textarea{font-size:16px;min-height:46px}
+  .btn,.iconbtn{min-height:44px}
+  .daygrid{gap:4px}
+  .day{min-height:46px}
+  .chart{height:190px}
+}
+@media (max-width:380px){
+  .app{padding-left:11px;padding-right:11px}
+  .topbar{margin-left:-11px;margin-right:-11px;padding-left:11px;padding-right:11px}
+  .card{padding:14px}
+  .section h1{font-size:26px}
+  .bottomnav button{flex-basis:66px;width:66px;min-width:66px}
+}
+
+
+/* FitTrack Intelligence and assistant */
+.ai-brief-card{background:linear-gradient(145deg,color-mix(in srgb,var(--accent2) 18%,var(--panel)),var(--panel));border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.smart-briefing{padding:13px 14px;margin-top:10px;border-radius:13px;background:var(--panel2);line-height:1.6;white-space:normal}
+.smart-briefing ul{margin:8px 0 0;padding-left:20px}.smart-briefing li{margin:5px 0}
+.smart-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
+.smart-stat{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:10px;min-width:0}
+.smart-stat b{display:block;font-size:19px;overflow-wrap:anywhere}.smart-stat span{font-size:11px;color:var(--muted)}
+.assistant-card{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.assistant-output{background:var(--panel2);border:1px solid var(--line);border-radius:13px;padding:13px;min-height:54px;margin:10px 0;line-height:1.55}
+.assistant-controls{display:flex;gap:8px;flex-wrap:wrap}.assistant-controls input{flex:1 1 180px;min-width:0}
+@media(max-width:520px){.smart-stats{grid-template-columns:repeat(3,minmax(0,1fr))}.smart-stat{padding:8px}.smart-stat b{font-size:16px}.assistant-controls .btn{flex:1}}
+
+
+/* FitTrack Max: focus studio, universal search, capability center */
+.focus-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.8fr);gap:16px;align-items:center}
+.focus-clock{font-size:clamp(42px,8vw,62px);font-weight:950;letter-spacing:-2px;font-variant-numeric:tabular-nums;line-height:1.1;margin:8px 0}
+.focus-ring{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;margin:auto;background:conic-gradient(var(--accent) var(--focus-progress,0%),var(--line) 0);position:relative}
+.focus-ring:before{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--panel)}
+.focus-ring>*{position:relative;z-index:1;text-align:center}
+.quick-launch{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}
+.quick-launch button{min-height:62px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+.quick-launch span{font-size:19px}.quick-launch small{font-size:11px;color:var(--muted)}
+.search-backdrop{position:fixed;inset:0;background:#000b;z-index:60;display:none;place-items:start center;padding:9vh 14px 20px}
+.search-backdrop.open{display:grid}
+.search-dialog{width:min(680px,100%);max-height:78vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 24px 80px #0008}
+.search-results{margin-top:10px}.search-result{width:100%;text-align:left;display:block;background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:11px;margin:7px 0}
+.capability-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.capability{padding:11px;border:1px solid var(--line);border-radius:12px;background:var(--panel2)}.capability b{display:block;font-size:13px}.capability span{font-size:12px;color:var(--muted)}
+@media(max-width:600px){.focus-panel{grid-template-columns:1fr}.focus-ring{width:132px;height:132px}.quick-launch{grid-template-columns:repeat(2,minmax(0,1fr))}.capability-grid{grid-template-columns:1fr}}
+
+</style>
+ </head>
+ <body data-theme="navy">
+  <div class="app">
+   <header class="topbar">
+    <div class="brand">
+     <div class="logo">F</div>
+     <div>
+      FitTrack
+      <div class="date-label" id="todayLabel">Your fitness, at your pace</div>
+     </div>
+    </div>
+    <div class="header-actions">
+     <button class="btn small ghost hide-mobile" onclick="showSection('settings')">⚙ Settings</button>
+     <button class="btn small ghost" id="installAppBtn" onclick="installFitTrack()" hidden>＋ Install</button>
+     <button class="btn small primary" onclick="showSection('workout')">▶ Workout</button>
+    </div>
+   </header>
+   <div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="content">
+     <section class="section active" id="dashboard">
+      <div class="subhead">
+       <div>
+        <h1>Good to see you.</h1>
+        <p>Your fitness, at your pace.</p>
+       </div>
+       <span class="pill" id="todayPill"></span>
+      </div>
+      <div class="grid">
+       <div class="card span12" id="pwaInstallCard">
+        <div class="between"><div><div class="eyebrow">ANDROID APP EXPERIENCE</div><h2 style="margin-top:5px">Install FitTrack on this device</h2></div><span class="pill" id="pwaStatus">Checking…</span></div>
+        <p id="pwaHelp">Install FitTrack for a home-screen icon and a standalone app window. Your data remains in this browser on this device.</p>
+        <div class="row"><button class="btn primary" id="pwaInstallCardBtn" onclick="installFitTrack()">Install FitTrack</button><button class="btn" onclick="showPwaHelp()">How to install</button></div>
+        <p class="tiny muted" id="pwaDetail">Installation requires a secure website (HTTPS) or localhost. Opening this HTML directly as a file is not enough for offline PWA installation.</p>
+       </div>
+       <div class="card span12 ai-brief-card">
+        <div class="between"><div><div class="eyebrow">FITTRACK INTELLIGENCE · LOCAL INSIGHTS</div><h2 style="margin-top:5px">Your daily briefing</h2></div><span class="pill" id="aiStatus">Ready</span></div>
+        <div id="smartBriefing" class="smart-briefing" aria-live="polite">Your briefing will be generated from the records you save in FitTrack.</div>
+        <div class="smart-stats" id="smartStats"></div>
+       </div>
+       <div class="card span12 assistant-card">
+        <div class="between"><div><div class="eyebrow">VOICE & COMMAND CENTRE</div><h2 style="margin-top:5px">FitTrack Assistant</h2></div><span class="pill">Local mode</span></div>
+        <p>Try: “How am I doing?”, “Show my progress”, “Open workout”, “Start walking”, “Focus start”, “Open search” or “Export backup”.</p>
+        <div class="assistant-output" id="assistantOutput" aria-live="polite">Hello! I'm FitTrack Assistant. I can help you navigate the app and summarize your saved activity.</div>
+        <div class="assistant-controls"><input id="assistantCommand" type="text" maxlength="180" placeholder="Type a command…" aria-label="Type a command" onkeydown="if(event.key==='Enter')runAssistantCommand()"><button class="btn primary" onclick="runAssistantCommand()">Send</button><button class="btn" id="voiceCommandBtn" onclick="startVoiceCommand()">🎙 Speak</button><button class="btn ghost" onclick="speakAssistant()">🔊 Read</button></div>
+        <div class="tiny muted" id="voiceSupportNote">Voice input depends on your browser. Commands and insights stay on this device.</div>
+       </div>
+       <div class="card span12">
+        <div class="between"><div><div class="eyebrow">FOCUS STUDIO</div><h2 style="margin-top:5px">Your focus session</h2></div><span class="pill" id="focusStatus">Ready when you are</span></div>
+        <div class="focus-panel">
+         <div>
+          <p>Use this for study, reading, planning or a quiet break. You can pause or stop whenever you want.</p>
+          <div class="fields"><div class="field"><label for="focusMinutes">Session length</label><select id="focusMinutes" onchange="setFocusLength(this.value)"><option value="15">15 minutes</option><option value="25" selected>25 minutes</option><option value="35">35 minutes</option><option value="45">45 minutes</option><option value="50">50 minutes</option></select></div><div class="field"><label for="focusLabel">What are you focusing on?</label><input id="focusLabel" maxlength="60" placeholder="e.g. Chemistry revision"></div></div>
+          <div class="row"><button class="btn primary" id="focusStartBtn" onclick="startFocus()">▶ Start focus</button><button class="btn" id="focusPauseBtn" onclick="pauseFocus()" disabled>Pause</button><button class="btn ghost" onclick="resetFocus()">Reset</button></div>
+         </div>
+         <div><div class="focus-ring" id="focusRing"><div><div class="focus-clock" id="focusClock">25:00</div><div class="tiny muted">FOCUS TIMER</div></div></div><div class="tiny muted" id="focusHint" style="text-align:center;margin-top:8px">No session running</div></div>
+        </div>
+        <div class="divider"></div><div class="eyebrow">QUICK LAUNCH</div>
+        <div class="quick-launch">
+         <button class="btn" onclick="showSection('workout')"><span>⚡</span><small>Workout</small></button>
+         <button class="btn" onclick="showSection('sleep')"><span>☾</span><small>Sleep & habits</small></button>
+         <button class="btn" onclick="showSection('progress')"><span>▥</span><small>Analytics</small></button>
+         <button class="btn" onclick="openGlobalSearch()"><span>⌕</span><small>Search records</small></button>
+        </div>
+       </div>
+       <div class="card span3">
+        <div class="eyebrow">Habits today</div>
+        <div class="metric" id="habitMetric">0/0</div>
+        <div class="progress">
+         <i id="habitBar"></i>
+        </div>
+        <div class="tiny muted">Only enabled habits count</div>
+       </div>
+       <div class="card span6" id="stepsCard">
+        <div class="between"><h2>Today's steps</h2><span class="pill" id="stepStatus">Ready</span></div>
+        <div class="metric" id="stepMetric">0 <small>steps recorded</small></div>
+        <div class="progress"><i id="stepBar"></i></div>
+        <p class="tiny" id="stepGoalHint">Enter your phone's step total below. A goal is optional.</p>
+        <div class="fields">
+         <div class="field"><label for="stepTotalInput">Phone's total steps today</label><input id="stepTotalInput" type="number" min="0" step="1" inputmode="numeric" placeholder="e.g. 4200"></div>
+         <div class="field"><label for="stepGoalInput">Optional daily reference</label><input id="stepGoalInput" type="number" min="0" step="100" inputmode="numeric" placeholder="No goal set"></div>
+        </div>
+        <div class="row"><button class="btn primary" onclick="saveStepTotal()">Save step total</button><button class="btn ghost" onclick="clearStepGoal()">Clear goal</button></div>
+        <div class="divider"></div>
+        <div class="between"><div><div class="eyebrow">Walking session</div><div class="metric" id="walkClock">00:00:00</div></div><span class="pill" id="walkSessionState">Not started</span></div>
+        <div class="row"><button class="btn primary" id="walkStartBtn" onclick="startWalkSession()">▶ Start</button><button class="btn" id="walkPauseBtn" onclick="pauseWalkSession()" disabled>Pause</button><button class="btn ghost" id="walkStopBtn" onclick="stopWalkSession()" disabled>Stop &amp; save</button></div>
+        <p class="tiny" id="walkCalorieNote">Calories are a broad estimate only; your body and pace affect the real number.</p>
+        <div id="walkSessionSummary" class="tiny muted"></div>
+        <div class="divider"></div>
+        <div class="between"><b>Today's estimated activity calories</b><b id="walkCaloriesToday">—</b></div>
+        <div id="walkSessionHistory"></div>
+       </div>
+       <div class="card span3">
+        <div class="eyebrow">Water</div>
+        <div class="metric" id="waterMetric">
+         0 <small>/ 2 L</small>
+        </div>
+        <div class="row">
+         <button class="btn small" onclick="addWater(250)">+250 ml</button>
+         <button class="btn small ghost" onclick="addWater(500)">+500 ml</button>
+         <button class="btn small ghost" onclick="undoWater()">Undo last</button>
+        </div>
+        <div id="waterLogMini"></div>
+       </div>
+       <div class="card span3">
+        <div class="eyebrow">Sleep last night</div>
+        <div class="metric" id="sleepMetric">—</div>
+        <div class="tiny muted" id="sleepEnergy">Log your sleep &amp; energy</div>
+       </div>
+       <div class="card span3">
+        <div class="eyebrow">Food logged today</div>
+        <div class="metric" id="foodMetric">
+         0 <small>entries</small>
+        </div>
+        <div class="tiny muted" id="nutritionMini">Estimated nutrition appears here</div>
+       </div>
+       <div class="card span7">
+        <div class="between">
+         <h2>Today's workout</h2>
+         <span class="pill" id="workoutPill">Plan</span>
+        </div>
+        <div id="dashWorkout"></div>
+        <div class="row" style="margin-top:12px">
+         <button class="btn primary" onclick="showSection('workout')">Open workout</button>
+         <button class="btn ghost" onclick="toggleRestDay()">Mark rest / recovery day</button>
+        </div>
+       </div>
+       <div class="card span5">
+        <h2>Quick check-in</h2>
+        <p>How are you feeling today?</p>
+        <div class="fields">
+         <div class="field">
+          <label for="mood">Mood</label><select id="mood"><option value="">Choose…</option><option>Great</option><option>Good</option><option>Okay</option><option>Low</option><option>Stressed</option></select>
+         </div>
+         <div class="field">
+          <label for="energy">Energy (1–5)</label><select id="energy"><option value="">Choose…</option><option value="1">1 · Very low</option><option value="2">2 · Low</option><option value="3">3 · Okay</option><option value="4">4 · Good</option><option value="5">5 · High</option></select>
+         </div>
+        </div>
+        <div class="field">
+         <label for="checkNote">Optional note</label><input id="checkNote" maxlength="180" placeholder="A quick thought…">
+        </div>
+        <button class="btn primary" style="margin-top:10px" onclick="saveCheckin()">Save check-in</button>
+       </div>
+       <div class="card span6">
+        <div class="between">
+         <h2>Nutrition snapshot</h2>
+         <button class="btn small" onclick="showSection('nutrition')">Log food</button>
+        </div>
+        <p>Estimated totals from what you logged — no compulsory targets.</p>
+        <div class="grid" style="gap:8px;margin-top:12px">
+         <div class="card span6">
+          <div class="eyebrow">Calories</div>
+          <div class="metric" id="dCal">0</div>
+         </div>
+         <div class="card span6">
+          <div class="eyebrow">Protein</div>
+          <div class="metric" id="dProtein">
+           0 <small>g</small>
+          </div>
+         </div>
+         <div class="card span6">
+          <div class="eyebrow">Carbs</div>
+          <div class="metric" id="dCarbs">
+           0 <small>g</small>
+          </div>
+         </div>
+         <div class="card span6">
+          <div class="eyebrow">Fat</div>
+          <div class="metric" id="dFat">
+           0 <small>g</small>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="card span6">
+        <div class="between">
+         <h2>Mobility &amp; posture</h2>
+         <span class="pill" id="mobilityPill">Not logged</span>
+        </div>
+        <p>Gentle, controlled movement. No forcing stretches.</p>
+        <div id="dashMobility"></div>
+        <div class="row">
+         <button class="btn primary" onclick="showSection('mobility')">Open routine</button>
+         <button class="btn ghost" onclick="toggleMobility()">Mark complete</button>
+        </div>
+       </div>
+       <div class="card span6">
+        <div class="between">
+         <h2>Recent consistency</h2>
+         <button class="btn small" onclick="showSection('progress')">View history</button>
+        </div>
+        <div id="weeklyStrip" class="weekstrip"></div>
+        <p class="tiny">Shows saved activity only. Rest days are valid too.</p>
+       </div>
+       <div class="card span6">
+        <h2>Shortcuts</h2>
+        <div class="row">
+         <button class="btn" onclick="showSection('journal')">✎ Private journal</button>
+         <button class="btn" onclick="showSection('calendar')">▦ Calendar</button>
+         <button class="btn" onclick="showSection('sleep')">☾ Sleep &amp; habits</button>
+        </div>
+        <div class="notice info">Keep it simple: log what matters, move at your pace, and protect your recovery.</div>
+       </div>
+      </div>
+     </section>
+     <section class="section" id="workout">
+      <div class="subhead">
+       <div>
+        <h1>Workout</h1>
+        <p>Home-based training, adjustable to your energy and ability.</p>
+       </div>
+       <span class="pill">Start whenever you actually train</span>
+      </div>
+      <div class="grid">
+       <div class="card span8">
+        <div class="between">
+         <h2 id="workoutTitle">Today's plan</h2>
+         <input style="max-width:155px" type="date" id="workoutDate" onchange="renderWorkout()">
+        </div>
+        <div class="session-panel">
+         <div class="between">
+          <div>
+           <div class="eyebrow">Workout session</div>
+           <div class="metric" id="sessionClock">Not started</div>
+           <p id="sessionMeta">Tap Start when you actually begin — any time of day.</p>
+          </div>
+          <span class="pill" id="sessionStatus">Ready</span>
+         </div>
+         <div class="row">
+          <button class="btn primary" id="startWorkoutBtn" onclick="startWorkoutSession()">▶ Start workout now</button>
+          <button class="btn" id="finishWorkoutBtn" onclick="finishWorkoutSession()">Finish session</button>
+         </div>
+        </div>
+        <div class="rest-panel">
+         <div>
+          <div class="eyebrow">Rest timer</div>
+          <div class="rest-clock" id="restClock">01:00</div>
+         </div>
+         <div class="row">
+          <button class="btn small" onclick="startRestTimer(30)">30 sec</button>
+          <button class="btn small" onclick="startRestTimer(45)">45 sec</button>
+          <button class="btn small" onclick="startRestTimer(60)">60 sec</button>
+          <button class="btn small ghost" onclick="stopRestTimer()">Stop</button>
+         </div>
+        </div>
+        <div id="workoutContent"></div>
+        <div class="divider"></div>
+        <div class="row">
+         <button class="btn primary" onclick="saveWorkout()">Save workout</button>
+         <button class="btn" onclick="setShortWorkout()">Use short workout</button>
+         <button class="btn ghost" onclick="clearWorkoutChecks()">Clear checks</button>
+        </div>
+       </div>
+       <div class="card span4">
+        <h2>Warm-up &amp; cooldown</h2>
+        <p><b>Warm-up · 5–7 min</b></p>
+        <p>March in place, arm circles, hip hinges, gentle squats and shoulder mobility. Add 10 warm-up push-ups Tue–Fri only if comfortable; optional on tired/sore days. Monday is the dedicated push day.</p>
+        <div class="divider"></div>
+        <p><b>Cooldown · ~5 min</b></p>
+        <p>Chest stretch, shoulder stretch, quad stretch, hamstring stretch, child’s pose. Hold each comfortably for 20–30 seconds.</p>
+        <div class="notice">Stop for sharp pain, dizziness or joint pain. Keep most sets 1–2 reps short of failure. Never train through pain.</div>
+        <h3>Safe progression</h3>
+        <p>Only add 1–2 reps per set when form stays good, or slow reps down. Skip or shorten workouts rather than sacrificing sleep.</p>
+       </div>
+       <div class="card span6">
+        <h2>Weekly plan</h2>
+        <div id="weeklyPlan"></div>
+       </div>
+       <div class="card span6">
+        <h2>Weekly progress check</h2>
+        <p>Optional measures; ability and energy matter more than appearance.</p>
+        <div class="fields">
+         <div class="field">
+          <label>Max push-ups (good form)</label><input id="maxPush" type="number" min="0" max="500">
+         </div>
+         <div class="field">
+          <label>Max squats (good form)</label><input id="maxSquat" type="number" min="0" max="1000">
+         </div>
+        </div>
+        <div class="fields">
+         <div class="field">
+          <label>Plank seconds</label><input id="maxPlank" type="number" min="0" max="3600">
+         </div>
+         <div class="field">
+          <label>Weight (optional)</label><input id="weight" type="number" min="0" step=".1" placeholder="Skip if unwanted">
+         </div>
+        </div>
+        <div class="fields">
+         <div class="field">
+          <label>Energy (1–5)</label><select id="progressEnergy"><option value="">Choose…</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+         </div>
+        </div>
+        <button class="btn primary" onclick="saveProgress()">Save weekly check</button>
+        <p class="tiny">Measurements are optional and are not required for progress.</p>
+       </div>
+      </div>
+     </section>
+     <section class="section" id="nutrition">
+      <div class="subhead">
+       <div>
+        <h1>Nutrition &amp; food log</h1>
+        <p>Log what you actually eat. Foods are choices, not a day-wise diet or a pass/fail score.</p>
+       </div>
+       <span class="pill">Estimates only</span>
+      </div>
+      <div class="grid">
+       <div class="card span7">
+        <h2>Add food</h2>
+        <div class="fields">
+         <div class="field">
+          <label>Meal</label><select id="mealType"><option>Breakfast</option><option>Lunch</option><option>Dinner</option><option>Snack</option></select>
+         </div>
+         <div class="field">
+          <label>Search food guide</label><input id="foodSearch" placeholder="e.g. roti, paneer, apple" oninput="renderFoodSearch()">
+         </div>
+        </div>
+        <div class="food-results" id="foodResults"></div>
+        <div class="divider"></div>
+        <h3>Custom food / portion</h3>
+        <div class="fields">
+         <div class="field">
+          <label>Food name</label><input id="customName" placeholder="Anything you ate">
+         </div>
+         <div class="field">
+          <label>Quantity</label><input id="customQty" type="number" min=".1" step=".1" value="1">
+         </div>
+         <div class="field">
+          <label>Unit</label><input id="customUnit" value="serving">
+         </div>
+        </div>
+        <p class="tiny">Nutrition per quantity entered (leave unknown values blank). Use the food guide above for quick defaults.</p>
+        <div class="fields">
+         <div class="field">
+          <label>Calories</label><input id="customCal" type="number" min="0" placeholder="kcal">
+         </div>
+         <div class="field">
+          <label>Protein (g)</label><input id="customProtein" type="number" min="0">
+         </div>
+         <div class="field">
+          <label>Carbs (g)</label><input id="customCarbs" type="number" min="0">
+         </div>
+         <div class="field">
+          <label>Fat (g)</label><input id="customFat" type="number" min="0">
+         </div>
+         <div class="field">
+          <label>Fibre (g)</label><input id="customFibre" type="number" min="0">
+         </div>
+        </div>
+        <button class="btn primary" onclick="addCustomFood()">Save food entry</button>
+       </div>
+       <div class="card span5">
+        <h2>Today's estimated totals</h2>
+        <div class="grid">
+         <div class="card span6">
+          <div class="eyebrow">Calories</div>
+          <div class="metric" id="nCal">0</div>
+         </div>
+         <div class="card span6">
+          <div class="eyebrow">Protein</div>
+          <div class="metric" id="nProtein">
+           0 <small>g</small>
+          </div>
+         </div>
+         <div class="card span6">
+          <div class="eyebrow">Carbs</div>
+          <div class="metric" id="nCarbs">
+           0 <small>g</small>
+          </div>
+         </div>
+         <div class="card span6">
+          <div class="eyebrow">Fat</div>
+          <div class="metric" id="nFat">
+           0 <small>g</small>
+          </div>
+         </div>
+         <div class="card span6">
+          <div class="eyebrow">Fibre</div>
+          <div class="metric" id="nFibre">
+           0 <small>g</small>
+          </div>
+         </div>
+        </div>
+        <div class="notice info">These are estimates, not targets. Portions, brands and recipes vary. No penalty for sweets or snacks.</div>
+        <h3>Water</h3>
+        <div class="metric" id="nWater">
+         0 <small>ml</small>
+        </div>
+        <div class="row">
+         <button class="btn small" onclick="addWater(150)">+150 ml</button>
+         <button class="btn small" onclick="addWater(250)">+250 ml</button>
+         <button class="btn small" onclick="addWater(500)">+500 ml</button>
+         <button class="btn small ghost" onclick="undoWater()">Undo last</button>
+        </div>
+        <div id="waterLog"></div>
+        <div class="fields">
+         <div class="field">
+          <label>Flexible water reference (ml)</label><input id="waterGoal" type="number" min="250" max="6000" step="250" value="2000">
+         </div>
+         <button class="btn" style="align-self:end" onclick="saveWaterGoal()">Save</button>
+        </div>
+        <p class="tiny">Drink to thirst and adjust for heat/activity; don't force excessive water.</p>
+       </div>
+       <div class="card span12">
+        <div class="between">
+         <h2>Food history · today</h2>
+         <button class="btn small ghost" onclick="showSection('calendar')">Browse by date</button>
+        </div>
+        <div id="foodLog"></div>
+       </div>
+       <div class="card span6">
+        <h2>Favourite foods</h2>
+        <p>Save frequent entries for faster logging.</p>
+        <div id="favourites"></div>
+       </div>
+       <div class="card span6">
+        <h2>Grocery checklist</h2>
+        <div class="fields">
+         <div class="field">
+          <label>Add item</label><input id="groceryName" placeholder="e.g. curd">
+         </div>
+         <button class="btn" style="align-self:end" onclick="addGrocery()">Add</button>
+        </div>
+        <div id="groceryList"></div>
+       </div>
+       <div class="card span12">
+        <h2>Food guide library</h2>
+        <p>Browse anytime; this is not a meal schedule. Approximate values are for a typical portion.</p>
+        <div id="foodGuide"></div>
+       </div>
+      </div>
+     </section>
+     <section class="section" id="mobility">
+      <div class="subhead">
+       <div>
+        <h1>Posture &amp; mobility</h1>
+        <p>A gentle daily routine for comfort, movement and posture awareness.</p>
+       </div>
+       <span class="pill">~6–8 minutes</span>
+      </div>
+      <div class="grid">
+       <div class="card span7">
+        <h2>Today's routine</h2>
+        <p>Move slowly, breathe normally and stay in a comfortable range.</p>
+        <div id="mobilityList"></div>
+        <button class="btn primary" style="margin-top:12px" onclick="saveMobility()">Save routine</button>
+        <div class="notice">Avoid forceful neck circles, neck bridges, weighted neck exercises and painful movements. Stop if you feel tingling, numbness, sharp pain or dizziness.</div>
+       </div>
+       <div class="card span5">
+        <h2>Posture check-in</h2>
+        <p>Quick awareness check — not a demand to sit perfectly.</p>
+        <div id="postureChecks"></div>
+        <div class="divider"></div>
+        <div class="fields">
+         <div class="field">
+          <label>Optional height (cm)</label><input id="heightCm" type="number" min="50" max="250" step=".1" placeholder="Optional monthly check">
+         </div>
+         <button class="btn" style="align-self:end" onclick="saveHeight()">Save</button>
+        </div>
+        <p class="tiny">Stretching can support flexibility and posture, but cannot guarantee increased height. Height measurement is optional.</p>
+       </div>
+      </div>
+     </section>
+     <section class="section" id="facecare">
+      <div class="subhead"><div><h1>Face, eyes &amp; ears</h1><p>Simple daily care for skin, posture, vision comfort and hearing protection.</p></div><span class="pill">~10–15 min + screen breaks</span></div>
+      <div class="grid">
+       <div class="card span6">
+        <h2>Face &amp; skin care</h2><p>Keep the routine gentle. These habits support skin health; they do not reshape facial bones or guarantee a sharper jawline.</p>
+        <div id="faceCareChecks"></div>
+        <div class="notice info">Morning: gentle cleanser, non-comedogenic moisturiser and broad-spectrum SPF 30–50. Evening: gentle cleanse and moisturise. Use lip balm; SPF lip balm outdoors. Don't pick pimples or use harsh scrubs.</div>
+       </div>
+       <div class="card span6">
+        <h2>Neck &amp; jaw comfort</h2><p>Posture and relaxation only — no forceful jaw or neck training.</p>
+        <div id="facePostureChecks"></div>
+        <div class="notice">Keep your head comfortable and neutral, relax your jaw with teeth slightly apart at rest, and avoid jaw trainers or excessive gum chewing. Stop neck movements if painful or dizzy.</div>
+       </div>
+       <div class="card span6">
+        <h2>Eye protection</h2><p>For spectacle wearers and screen-related eye tiredness.</p>
+        <div id="eyeCareChecks"></div>
+        <div class="notice info">Follow the 20-20-20 rule: every 20 minutes, look about 20 feet away for at least 20 seconds. Use your prescribed spectacles and comfortable lighting. Eye exercises do not reduce spectacle power.</div>
+       </div>
+       <div class="card span6">
+        <h2>Ear &amp; hearing protection</h2><p>Protect hearing and avoid irritating the ear canal.</p>
+        <div id="earCareChecks"></div>
+        <div class="notice">Clean only the outer ear with a soft cloth. Never insert cotton buds or tools into the canal; avoid ear candles and unadvised drops. Keep headphone volume moderate and take breaks.</div>
+       </div>
+       <div class="card span12">
+        <h2>Tinnitus check-in</h2><p>You previously reported ringing in your ears. Record what you notice; this tracker cannot diagnose the cause.</p>
+        <div class="fields">
+         <div class="field"><label>Ringing today</label><select id="tinnitusLevel"><option value="Not noticed">Not noticed</option><option value="Mild / brief">Mild / brief</option><option value="Intermittent">Comes and goes</option><option value="Frequent">Frequent</option><option value="Constant">Constant</option></select></div>
+         <div class="field"><label>Which side?</label><select id="tinnitusSide"><option value="Not sure">Not sure</option><option value="Left">Left</option><option value="Right">Right</option><option value="Both">Both</option><option value="Inside head">Inside head</option></select></div>
+         <div class="field"><label>Notes (optional)</label><input id="tinnitusNote" maxlength="240" placeholder="When it happens, possible noise exposure…"></div>
+        </div>
+        <button class="btn primary" style="margin-top:10px" onclick="saveTinnitus()">Save today's check-in</button>
+        <div id="tinnitusHistory" class="tiny muted" style="margin-top:10px"></div>
+        <div class="notice warning">Please tell a parent or trusted adult and arrange a doctor/ENT assessment for the ringing, including an ear examination and hearing test if advised. Sudden hearing loss with ringing needs urgent medical care. Also seek prompt care for heartbeat-synchronous ringing, severe dizziness or sudden neurological symptoms. Don't try to clear deep wax yourself.</div>
+       </div>
+      </div>
+     </section>
+     <section class="section" id="sleep">
+      <div class="subhead">
+       <div>
+        <h1>Sleep &amp; habits</h1>
+        <p>Track a few useful signals, without turning the day into a checklist.</p>
+       </div>
+      </div>
+      <div class="grid">
+       <div class="card span6">
+        <h2>Sleep log</h2>
+        <div class="fields">
+         <div class="field">
+          <label>Bedtime</label><input id="bedtime" type="time" value="22:30">
+         </div>
+         <div class="field">
+          <label>Wake-up time</label><input id="waketime" type="time" value="05:30">
+         </div>
+        </div>
+        <div class="fields">
+         <div class="field">
+          <label>Sleep quality (1–5)</label><select id="sleepQuality"><option value="">Choose…</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+         </div>
+         <div class="field">
+          <label>Energy (1–5)</label><select id="sleepEnergyInput"><option value="">Choose…</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+         </div>
+        </div>
+        <div class="field">
+         <label>Optional note</label><input id="sleepNote" maxlength="150" placeholder="How did you feel?">
+        </div>
+        <button class="btn primary" style="margin-top:10px" onclick="saveSleep()">Save sleep record</button>
+        <p class="tiny">Sleep duration is calculated from your times, including overnight sleep.</p>
+       </div>
+       <div class="card span6">
+        <h2>Daily habits</h2>
+        <p>Enable only what is helpful. Completion is tracked per date.</p>
+        <div id="habitSettings"></div>
+        <div class="divider"></div>
+        <div id="habitChecks"></div>
+        <button class="btn primary" style="margin-top:10px" onclick="saveHabits()">Save today's habits</button>
+       </div>
+       <div class="card span12">
+        <h2>Flexible daily rhythm (optional)</h2>
+        <div id="rhythmList"></div>
+        <p>Adjust this to your real routine. If you're tired, a short workout or rest day is fine.</p>
+       </div>
+      </div>
+     </section>
+     <section class="section" id="progress">
+      <div class="subhead">
+       <div>
+        <h1>Progress &amp; history</h1>
+        <p>Patterns calculated from records saved in this browser — no invented past activity.</p>
+       </div>
+       <button class="btn small" onclick="exportBackup()">Export backup</button>
+      </div>
+      <div class="grid">
+       <div class="card span12">
+        <h2>Steps · last 7 days</h2>
+        <canvas id="stepChart" class="chart" aria-label="Daily steps chart"></canvas>
+        <div class="smallchart">Phone totals entered for each day. Blank days mean no total was saved.</div>
+        <div id="stepHistory"></div>
+       </div>
+       <div class="card span6">
+        <h2>Workout consistency · last 7 days</h2>
+        <canvas id="workoutChart" class="chart" aria-label="Workout consistency chart"></canvas>
+        <div class="smallchart">Completed planned sessions per day</div>
+       </div>
+       <div class="card span6">
+        <h2>Sleep duration · last 7 days</h2>
+        <canvas id="sleepChart" class="chart" aria-label="Sleep chart"></canvas>
+        <div class="smallchart">Hours recorded each day</div>
+       </div>
+       <div class="card span6">
+        <h2>Energy · last 7 days</h2>
+        <canvas id="energyChart" class="chart" aria-label="Energy chart"></canvas>
+       </div>
+       <div class="card span6">
+        <h2>Logged food · last 7 days</h2>
+        <canvas id="foodChart" class="chart" aria-label="Food log chart"></canvas>
+        <div class="smallchart">Entries logged; not a nutrition score</div>
+       </div>
+       <div class="card span12">
+        <h2>Recent saved records</h2>
+        <div id="historyList"></div>
+       </div>
+       <div class="card span12">
+        <h2>Optional measurements</h2>
+        <div id="measureHistory"></div>
+       </div>
+      </div>
+     </section>
+     <section class="section" id="journal">
+      <div class="subhead">
+       <div>
+        <h1>Private journal</h1>
+        <p>Stored locally in this browser by default. A few words are enough; every field is optional.</p>
+       </div>
+       <span class="pill">Local only</span>
+      </div>
+      <div class="grid">
+       <div class="card span6">
+        <h2>Today's entry</h2>
+        <div class="fields">
+         <div class="field">
+          <label>Mood</label><select id="journalMood"><option value="">Choose…</option><option>Great</option><option>Good</option><option>Okay</option><option>Low</option><option>Stressed</option></select>
+         </div>
+         <div class="field">
+          <label>Energy (1–5)</label><select id="journalEnergy"><option value="">Choose…</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+         </div>
+        </div>
+        <div class="field">
+         <label>One personal win</label><input id="journalWin" maxlength="180" placeholder="Something that went well">
+        </div>
+        <div class="field" style="margin-top:10px">
+         <label>One lesson or improvement</label><input id="journalLesson" maxlength="180" placeholder="Something to try next time">
+        </div>
+        <div class="field" style="margin-top:10px">
+         <label>Optional note</label><textarea id="journalNote" maxlength="1200" placeholder="Write only if you want to…"></textarea>
+        </div>
+        <div class="field" style="margin-top:10px">
+         <label>Fitness supported my day by… (optional)</label><input id="journalSupport" maxlength="180" placeholder="Optional note about how fitness felt today">
+        </div>
+        <button class="btn primary" style="margin-top:12px" onclick="saveJournal()">Save private entry</button>
+       </div>
+       <div class="card span6">
+        <h2>Past entries</h2>
+        <div class="fields">
+         <div class="field">
+          <label>Choose date</label><input id="journalDate" type="date" onchange="loadJournalDate()">
+         </div>
+         <button class="btn" style="align-self:end" onclick="deleteJournal()">Delete selected</button>
+        </div>
+        <div id="journalHistory"></div>
+       </div>
+      </div>
+     </section>
+     <section class="section" id="calendar">
+      <div class="subhead">
+       <div>
+        <h1>Calendar</h1>
+        <p>Choose a date to see only the records you actually saved.</p>
+       </div>
+      </div>
+      <div class="grid">
+       <div class="card span7">
+        <div class="between">
+         <button class="btn small" onclick="moveMonth(-1)">← Previous</button>
+         <h2 id="monthTitle"></h2>
+         <button class="btn small" onclick="moveMonth(1)">Next →</button>
+        </div>
+        <div class="daygrid" id="calendarGrid"></div>
+        <div class="tiny muted" style="margin-top:10px">A green dot means one or more records exist for that date.</div>
+       </div>
+       <div class="card span5">
+        <h2 id="selectedDateTitle">Selected date</h2>
+        <div id="dateDetails"></div>
+       </div>
+      </div>
+     </section>
+     <section class="section" id="settings">
+      <div class="subhead">
+       <div>
+        <h1>Settings &amp; backup</h1>
+        <p>Control the app's look, reminders and local data.</p>
+       </div>
+      </div>
+      <div class="grid">
+       <div class="card span6">
+        <h2>Theme</h2>
+        <p>Choose a theme; it applies throughout FitTrack.</p>
+        <div class="fields">
+         <div class="field">
+          <label>Colour theme</label><select id="themeSelect" onchange="setTheme(this.value)"><option value="navy">Dark navy &amp; violet</option><option value="light">Light</option><option value="forest">Forest</option><option value="rose">Rose</option><option value="ocean">Ocean</option> <option value="crimson">Crimson &amp; Black</option><option value="ruby">Ruby Red</option><option value="ember">Ember Red &amp; Orange</option><option value="cherry">Cherry Red &amp; Pink</option><option value="bloodmoon">Blood Moon</option><option value="carbon">Carbon &amp; Red</option><option value="sunset">Sunset</option><option value="gold">Black &amp; Gold</option><option value="arctic">Arctic Blue</option><option value="midnight">Midnight Blue</option><option value="mint">Mint Fresh</option><option value="lavender">Lavender Dream</option><option value="amethyst">Amethyst</option><option value="copper">Copper &amp; Charcoal</option><option value="neon">Neon Cyber</option><option value="sand">Warm Sand</option><option value="slate">Slate Grey</option><option value="lime">Lime Punch</option><option value="plum">Deep Plum</option><option value="teal">Deep Teal</option></select>
+         </div>
+        </div>
+        <div class="field" style="margin-top:12px">
+         <label>Automatic theme</label><select id="themeModeSelect" onchange="setThemeMode(this.value)"><option value="manual">Manual — keep my chosen theme</option><option value="open">Change every time I open FitTrack</option><option value="daily">Change once daily</option></select>
+        </div>
+        <p class="tiny">Automatic modes choose from all 25 themes. Your workout records are not affected.</p>
+       </div>
+       <div class="card span6">
+        <h2>Reminders</h2>
+        <p>These are in-page reminder preferences. A standalone HTML file may not remind you when Chrome is closed or suspended.</p>
+        <div id="reminderSettings"></div>
+        <button class="btn primary" style="margin-top:10px" onclick="saveReminders()">Save reminders</button>
+        <div class="notice info">Reminder times are preferences only; this standalone file cannot guarantee alerts when Chrome is closed or suspended.</div>
+        <h2 style="margin-top:20px">Data &amp; privacy</h2>
+        <p>FitTrack stores your records in this browser's local storage. It has no account or cloud sync. Data does not automatically move between devices and can be lost if browser/site data is cleared.</p>
+        <div class="row" style="margin-top:12px">
+         <button class="btn primary" onclick="exportBackup()">Export backup</button>
+         <button class="btn" onclick="document.getElementById('importFile').click()">Import backup</button>
+         <input class="hide" type="file" id="importFile" accept="application/json,.json" onchange="importBackup(event)">
+        </div>
+        <div class="divider"></div>
+        <button class="btn danger" onclick="confirmReset()">Reset all FitTrack data</button>
+        <p class="tiny">Export a backup before clearing data. Keep backup files private, especially if your journal contains personal notes.</p>
+       </div>
+       <div class="card span12">
+        <div class="between"><div><div class="eyebrow">DEVICE INTEGRATION</div><h2 style="margin-top:5px">Browser capability centre</h2></div><span class="pill">This device</span></div>
+        <p>Check what this browser can support. Permissions are optional and are requested only when you tap the related button.</p>
+        <div class="capability-grid" id="capabilityGrid"></div>
+        <div class="row" style="margin-top:12px"><button class="btn primary" onclick="requestNotifications()">Enable notifications</button><button class="btn" onclick="testNotification()">Send test notification</button><button class="btn ghost" onclick="refreshCapabilities()">Refresh status</button></div>
+        <p class="tiny">Notifications and reminders work only when the browser permits them; this HTML file cannot guarantee delivery after Chrome is closed or the phone suspends it. Microphone access is used only when you tap Speak.</p>
+       </div>
+       <div class="card span12">
+        <h2>Daily rhythm preferences</h2>
+        <p>Optional schedule ideas. Edit the labels/times as needed; they do not create alarms.</p>
+        <div id="editableRhythm"></div>
+        <button class="btn primary" style="margin-top:10px" onclick="saveRhythm()">Save rhythm</button>
+       </div>
+      </div>
+     </section>
+    </main>
+   </div>
+   <nav class="bottomnav" id="bottomnav"></nav>
+   <div class="search-backdrop" id="globalSearch" onclick="if(event.target===this)closeGlobalSearch()" role="dialog" aria-modal="true" aria-label="Search FitTrack">
+    <div class="search-dialog"><div class="between"><h2>Search your FitTrack</h2><button class="btn small" onclick="closeGlobalSearch()">Close ✕</button></div><input id="globalSearchInput" type="search" maxlength="100" placeholder="Search food, notes, dates, activities…" oninput="runGlobalSearch()" autocomplete="off"><div class="tiny muted" style="margin-top:7px">Search is local to this browser. Journal matches may contain private text.</div><div class="search-results" id="globalSearchResults"><div class="empty">Start typing to search your saved records.</div></div></div>
+   </div>
+   <div id="toast" class="toast hide" role="status"></div>
+   <div id="modalroot"></div>
+   <div class="footer">FitTrack · Local-first by design · Move at your own pace.</div>
+  </div>
+  <script>
+'use strict';
+const KEY='fittrack_standalone_v1';
+const navItems=[['dashboard','⌂','Dashboard'],['workout','⚡','Workout'],['nutrition','🥗','Food log'],['mobility','↗','Mobility'],['facecare','◉','Face & senses'],['sleep','☾','Sleep & habits'],['progress','▥','Progress'],['journal','✎','Journal'],['calendar','▦','Calendar'],['settings','⚙','Settings']];
+const today=()=>dateKey(new Date());
+function dateKey(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function parseDate(s){const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)}
+function offsetDate(key,offset){let d=parseDate(key);d.setDate(d.getDate()+offset);return dateKey(d)}
+function fmtDate(key,opts={weekday:'short',month:'short',day:'numeric'}){return parseDate(key).toLocaleDateString(undefined,opts)}
+function fresh(){return {theme:'navy',stepGoal:0,focusTimer:{durationSec:1500,remainingSec:1500,running:false,startedAt:null,label:''},reminderSent:{},settings:{protectionLevel:'Strict',loggingBudget:5,quietStart:'07:45',quietEnd:'22:00',lectureStart:'11:00',lectureEnd:'17:00',suppressReminders:true,waterGoal:2000},records:{},favourites:[],groceries:[],reminders:{workout:{enabled:true,time:'05:40'},food:{enabled:false,time:'19:00'},water:{enabled:false,time:'14:00'},sleep:{enabled:true,time:'21:30'},journal:{enabled:false,time:'21:35'}},rhythm:[['Wake up','05:30'],['Workout','05:45'],['Breakfast / get ready','06:30'],['Sleep target','22:30']]}}
+let db;
+try{db=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){db=null}
+if(!db||typeof db!=='object')db=fresh();
+function normalize(){let f=fresh();db={...f,...db,settings:{...f.settings,...db.settings},records:db.records||{},reminders:{...f.reminders,...db.reminders},rhythm:db.rhythm||f.rhythm,favourites:db.favourites||[],groceries:db.groceries||[],focusTimer:{...f.focusTimer,...(db.focusTimer||{})},reminderSent:db.reminderSent||{}}}
+normalize();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(db));return true}catch(e){toast('Could not save: browser storage may be full or unavailable. Export data if possible.');return false}}
+function rec(key=today()){if(!db.records[key])db.records[key]={foods:[],water:0,waterEntries:[],habits:{},workout:{checks:{},done:false,rest:false},mobility:{checks:{},done:false},posture:{},journal:null,sleep:null,checkin:null,measurements:[]};let r=db.records[key];r.foods=r.foods||[];r.waterEntries=r.waterEntries||[];r.habits=r.habits||{};r.workout=r.workout||{checks:{},done:false,rest:false};r.workout.checks=r.workout.checks||{};r.mobility=r.mobility||{checks:{},done:false};r.mobility.checks=r.mobility.checks||{};r.posture=r.posture||{};r.faceCare=r.faceCare||{};r.facePosture=r.facePosture||{};r.eyeCare=r.eyeCare||{};r.earCare=r.earCare||{};r.tinnitus=r.tinnitus||null;r.tinnitusHistory=r.tinnitusHistory||[];r.measurements=r.measurements||[];r.steps=r.steps||{total:null,sessions:[]};r.steps.sessions=r.steps.sessions||[];return r}
+function toast(msg){let el=document.getElementById('toast');el.textContent=msg;el.classList.remove('hide');clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>el.classList.add('hide'),2500)}
+function safe(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function num(id){let v=Number(document.getElementById(id)?.value);return Number.isFinite(v)&&v>=0?v:0}
+function showSection(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='progress')renderProgress();if(id==='calendar')renderCalendar();if(id==='nutrition')renderNutrition();if(id==='facecare')renderFaceCare();if(id==='journal')renderJournal();if(id==='settings')loadSettings()}
+function initNav(){for(const target of ['sidebar','bottomnav']){let root=document.getElementById(target);root.innerHTML=navItems.map(([id,icon,label],i)=>`<button class="${target==='sidebar'?'navbtn':'navbtn'}" data-nav="${id}" onclick="showSection('${id}')"><span>${icon}</span><span>${label}</span></button>`).join('')} }
+const plan={
+Monday:{name:'Push',items:[['Push-ups','4 × 10–20 reps','60 sec'],['Pike push-ups','3 × 8–12','60 sec'],['Chair dips','3 × 12','60 sec'],['Diamond push-ups','3 × 8–10','60 sec'],['Plank','3 × 45 sec','45 sec']]},
+Tuesday:{name:'Legs & Glutes',items:[['Squats','4 × 20','60 sec'],['Lunges','3 × 12 per leg','60 sec'],['Glute bridges','3 × 20','45 sec'],['Calf raises','3 × 25','30 sec'],['Wall sit','3 × 40 sec','45 sec']]},
+Wednesday:{name:'Back & Core',items:[['Rows (secure setup only)','4 × 12','60 sec'],['Superman','3 × 30 sec','45 sec'],['Leg raises','3 × 12','45 sec'],['Mountain climbers','3 × 30 sec','45 sec'],['Reverse snow angels','3 × 12','45 sec']]},
+Thursday:{name:'Cardio',items:[['Jumping jacks','4 × 40 sec work','20 sec rest'],['High knees','4 × 40 sec work','20 sec rest'],['Skipping or fast jumps','4 × 40 sec work','20 sec rest'],['Burpees','4 × 40 sec work','20 sec rest'],['Plank','2 × 45 sec','30 sec']]},
+Friday:{name:'Full Body',items:[['Push-ups','3 rounds × 12','Minimal rest'],['Squats','3 rounds × 20','Minimal rest'],['Lunges','3 rounds × 10 per leg','Minimal rest'],['Plank','3 rounds × 40 sec','Minimal rest'],['Burpees','3 rounds × 8','60–90 sec after round']]},
+Saturday:{name:'Active Recovery',items:[['Walk','~30 minutes','Comfortable pace'],['Gentle stretching','5–10 minutes','Comfortable range'],['Mobility','Optional short routine','No pressure']]},
+Sunday:{name:'Rest day',items:[['Recovery','Rest and sleep well','No mandatory workout'],['Weekly review','Optional','Keep it brief']]}
+};
+function dayName(key=today()){return parseDate(key).toLocaleDateString('en-US',{weekday:'long'})}
+function planFor(key=today()){return plan[dayName(key)]||plan.Monday}
+function workoutItems(key=today(),short=false){let p=planFor(key);if(short)return [['Push-ups','3 sets within ability','Rest as needed'],['Squats','3 × 20','Rest as needed'],['Plank','3 × 40 sec','Rest as needed'],['Jumping jacks or burpees','2 × 30 sec','Rest as needed']];return p.items}
+function renderWorkout(){let input=document.getElementById('workoutDate');if(!input.value)input.value=today();let key=input.value,p=planFor(key),r=rec(key),items=workoutItems(key,!!r.workout.short);document.getElementById('workoutTitle').textContent=fmtDate(key,{weekday:'long',month:'short',day:'numeric'})+' · '+(r.workout.short?'Short option':p.name);renderWorkoutSession(r);document.getElementById('workoutContent').innerHTML=(p.name==='Back & Core'?'<div class="notice">Rows only if you have a genuinely secure setup. Never use unstable tables, unsafe doors or improvised sheet attachments. If none exists, use backpack-free reverse snow angels and extra superman holds instead.</div>':'')+(key===today()&&['Tuesday','Wednesday','Thursday','Friday'].includes(dayName(key))?'<div class="notice info">Optional warm-up: 10 push-ups if comfortable. Skip if sore, tired or form is slipping.</div>':'')+items.map((it,i)=>{let detail=String(it[1]),m=detail.match(/(\d+)\s*[×x]/i),sets=Number(m?.[1]||1),saved=(r.workout.exerciseData||{})[i]||{};return `<div class="exercise-card"><div class="exercise-top"><div class="exercise-number">${String(i+1).padStart(2,'0')}</div><div><div class="exercise-title">${safe(it[0])}</div><div class="exercise-meta">${safe(detail)} · Rest ${safe(it[2])}</div></div></div><div class="exercise-controls"><div class="field"><label>Sets done</label><input type="number" min="0" max="${sets}" value="${Number(saved.setsDone||0)}" onchange="updateExerciseData(${i},'setsDone',this.value,${sets})"></div><div class="field"><label>Target</label><input value="${safe(detail)}" readonly></div><div class="field"><label>Actual reps / time</label><input value="${safe(saved.actual||'')}" placeholder="e.g. 12 reps" maxlength="30" onchange="updateExerciseData(${i},'actual',this.value,${sets})"></div></div><div class="exercise-done"><label><input type="checkbox" ${r.workout.checks[i]?'checked':''} onchange="checkExercise(${i},this.checked)"> Mark exercise complete</label><button class="btn small" onclick="startRestTimer(${parseInt(it[2])||60})">Rest ${safe(it[2])}</button></div></div>`}).join('')+`<div class="fields"><div class="field"><label>Workout note (optional)</label><input id="workoutNote" maxlength="180" value="${safe(r.workout.note||'')}" placeholder="Energy, adjustments…"></div></div><div class="row"><span class="pill">${Object.values(r.workout.checks).filter(Boolean).length}/${items.length} exercises checked</span>${r.workout.done?'<span class="pill">Saved complete</span>':''}${r.workout.rest?'<span class="pill">Recovery day</span>':''}</div>`}
+let restInterval=null,sessionInterval=null,restEndsAt=0;
+function updateExerciseData(i,field,value,maxSets){let key=document.getElementById('workoutDate').value||today(),w=rec(key).workout;w.exerciseData=w.exerciseData||{};w.exerciseData[i]=w.exerciseData[i]||{};w.exerciseData[i][field]=field==='setsDone'?Math.max(0,Math.min(maxSets,Number(value)||0)):String(value).slice(0,30);save()}
+function startRestTimer(seconds){stopRestTimer();restEndsAt=Date.now()+Math.max(1,Number(seconds)||60)*1000;function tick(){let left=Math.max(0,Math.ceil((restEndsAt-Date.now())/1000)),el=document.getElementById('restClock');if(el)el.textContent=String(Math.floor(left/60)).padStart(2,'0')+':'+String(left%60).padStart(2,'0');if(left<=0){stopRestTimer(false);if(el)el.textContent='Rest done';}}tick();restInterval=setInterval(tick,250)}
+function stopRestTimer(reset=true){if(restInterval)clearInterval(restInterval);restInterval=null;if(reset){let el=document.getElementById('restClock');if(el)el.textContent='01:00'}}
+function updateSessionClock(){let key=document.getElementById('workoutDate')?.value||today(),w=rec(key).workout,el=document.getElementById('sessionClock');if(!el||!w.startedAt||w.endedAt)return;let sec=Math.max(0,Math.floor((Date.now()-new Date(w.startedAt).getTime())/1000));el.textContent=String(Math.floor(sec/3600)).padStart(2,'0')+':'+String(Math.floor(sec%3600/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0')}
+if(!sessionInterval)sessionInterval=setInterval(updateSessionClock,1000);
+function checkExercise(i,v){let key=document.getElementById('workoutDate').value||today();rec(key).workout.checks[i]=v;rec(key).workout.done=false;if(v){rec(key).workout.exerciseData=rec(key).workout.exerciseData||{};rec(key).workout.exerciseData[i]=rec(key).workout.exerciseData[i]||{};let mm=String(workoutItems(key,!!rec(key).workout.short)[i]?.[1]||'').match(/(\d+)\s*[×x]/i);rec(key).workout.exerciseData[i].setsDone=Number(mm?.[1]||1)}save();renderWorkout();renderDashboard()}
+function saveWorkout(){let key=document.getElementById('workoutDate').value||today(),r=rec(key);r.workout.note=document.getElementById('workoutNote')?.value||'';let items=workoutItems(key,!!r.workout.short);r.workout.done=items.every((_,i)=>r.workout.checks[i]);r.workout.completedAt=r.workout.done?new Date().toISOString():null;r.workout.rest=false;save();renderWorkout();renderDashboard();toast(r.workout.done?'Workout saved as complete':'Workout progress saved')}
+function setShortWorkout(){let key=document.getElementById('workoutDate').value||today();rec(key).workout.short=true;rec(key).workout.checks={};save();renderWorkout();toast('Short option selected')}
+function clearWorkoutChecks(){let key=document.getElementById('workoutDate').value||today();rec(key).workout.checks={};rec(key).workout.done=false;save();renderWorkout();renderDashboard()}
+function toggleRestDay(){let r=rec();r.workout.rest=!r.workout.rest;if(r.workout.rest)r.workout.done=false;save();renderDashboard();renderWorkout();toast(r.workout.rest?'Rest/recovery day saved':'Rest day unmarked')}
+const mobilityItems=[['Shoulder rolls','8 slow rolls each way'],['Chin tucks','6 gentle reps; no strain'],['Neck turns','5 each side, comfortable range'],['Side neck stretch','15–20 sec each side; gentle'],['Cat-cow','8 slow repetitions'],['Cobra pose','15–20 sec if comfortable'],['Chest doorway stretch','20 sec; gentle'],['Hamstring stretch','20 sec each side']];
+const postureItems=[['Relax shoulders','Let shoulders drop; avoid forcing them back'],['Screen position','Raise screen if comfortable; take eye breaks'],['Movement break','Change position or stand briefly'],['Comfort check','No pain, tingling or numbness']];
+function renderMobility(){let r=rec();document.getElementById('mobilityList').innerHTML=mobilityItems.map((x,i)=>`<div class="checkrow"><input type="checkbox" id="mob${i}" ${r.mobility.checks[i]?'checked':''} onchange="checkMobility(${i},this.checked)"><label for="mob${i}"><b>${safe(x[0])}</b><div class="exercise-meta">${safe(x[1])}</div></label></div>`).join('');document.getElementById('postureChecks').innerHTML=postureItems.map((x,i)=>`<div class="checkrow"><input type="checkbox" id="post${i}" ${r.posture[i]?'checked':''} onchange="rec().posture[${i}]=this.checked;save()"><label for="post${i}"><b>${safe(x[0])}</b><div class="exercise-meta">${safe(x[1])}</div></label></div>`).join('')}
+function checkMobility(i,v){rec().mobility.checks[i]=v;rec().mobility.done=false;save();renderMobility();renderDashboard()}
+function saveMobility(){let r=rec();r.mobility.done=mobilityItems.every((_,i)=>r.mobility.checks[i]);save();renderMobility();renderDashboard();toast(r.mobility.done?'Mobility routine saved':'Mobility progress saved')}
+function toggleMobility(){let r=rec();r.mobility.done=!r.mobility.done;if(r.mobility.done)r.mobility.checks=Object.fromEntries(mobilityItems.map((_,i)=>[i,true]));save();renderMobility();renderDashboard()}
+const faceCareItems=[['Morning gentle cleanse','Use a gentle cleanser; avoid scrubbing'],['Moisturiser','Choose a non-comedogenic moisturiser'],['Sunscreen','Broad-spectrum SPF 30–50 each morning'],['Evening cleanse','Gently wash off sweat, dirt and sunscreen'],['Evening moisturiser','Apply a comfortable moisturiser'],['Lip care','Use lip balm; SPF lip balm outdoors'],['Hands off pimples','Do not pick or squeeze spots']];
+const facePostureItems=[['Neutral neck posture','Keep head comfortable; avoid prolonged phone-down posture'],['Gentle chin tuck (optional)','Small comfortable movement only; stop if painful or dizzy'],['Relax jaw','Teeth slightly apart when resting; avoid clenching'],['Hair & grooming','Keep hair and glasses clean; choose a comfortable style']];
+const eyeCareItems=[['Wear prescribed spectacles','Use your current prescribed correction'],['20-20-20 breaks','Every 20 minutes, look far away for 20 seconds'],['Screen setup','Comfortable lighting; screen about an arm’s length away'],['Blink and rest','Blink normally and take longer study breaks'],['Outdoor daylight','Spend time outdoors when practical']];
+const earCareItems=[['Moderate headphone volume','Keep audio comfortable; avoid loud listening'],['Listening breaks','Take regular breaks from headphones'],['Protect from loud noise','Use suitable hearing protection in loud places'],['Outer ear only','Wipe outer ear gently; nothing inside the canal']];
+function renderCareChecks(id,items,field){let r=rec();document.getElementById(id).innerHTML=items.map((x,i)=>`<label class="checkrow"><input type="checkbox" ${r[field][i]?'checked':''} onchange="rec()['${field}'][${i}]=this.checked;save()"><span><b>${safe(x[0])}</b><div class="exercise-meta">${safe(x[1])}</div></span></label>`).join('')}
+function renderFaceCare(){renderCareChecks('faceCareChecks',faceCareItems,'faceCare');renderCareChecks('facePostureChecks',facePostureItems,'facePosture');renderCareChecks('eyeCareChecks',eyeCareItems,'eyeCare');renderCareChecks('earCareChecks',earCareItems,'earCare');let r=rec();document.getElementById('tinnitusLevel').value=r.tinnitus?.level||'Not noticed';document.getElementById('tinnitusSide').value=r.tinnitus?.side||'Not sure';document.getElementById('tinnitusNote').value=r.tinnitus?.note||'';document.getElementById('tinnitusHistory').textContent=r.tinnitusHistory.length?'Recent check-ins: '+r.tinnitusHistory.slice(-5).map(x=>x.date+': '+x.level+' ('+x.side+')').join(' · '):'No check-ins saved yet.'}
+function saveTinnitus(){let r=rec(),entry={date:today(),level:document.getElementById('tinnitusLevel').value,side:document.getElementById('tinnitusSide').value,note:document.getElementById('tinnitusNote').value.trim()};r.tinnitus=entry;r.tinnitusHistory=r.tinnitusHistory||[];r.tinnitusHistory=r.tinnitusHistory.filter(x=>x.date!==today());r.tinnitusHistory.push(entry);save();renderFaceCare();toast('Tinnitus check-in saved')}
+const habits=[['water','Drink water regularly'],['walk','Optional daily walk'],['food','Log meals if useful'],['mobility','Posture/mobility'],['workout','Workout or intentional recovery']];
+function renderHabits(){let enabled=db.habitEnabled||Object.fromEntries(habits.map(x=>[x[0],true]));document.getElementById('habitSettings').innerHTML=habits.map(([id,label])=>`<label class="checkrow"><input type="checkbox" ${enabled[id]?'checked':''} onchange="toggleHabitEnabled('${id}',this.checked)"><span>${label}</span></label>`).join('');let r=rec();document.getElementById('habitChecks').innerHTML=habits.filter(([id])=>enabled[id]).map(([id,label])=>`<label class="checkrow"><input type="checkbox" ${r.habits[id]?'checked':''} onchange="rec().habits['${id}']=this.checked;save();renderDashboard()"><span>${label}</span></label>`).join('')||'<p>No habits enabled. Turn on only what helps.</p>'}
+function toggleHabitEnabled(id,v){db.habitEnabled=db.habitEnabled||Object.fromEntries(habits.map(x=>[x[0],true]));db.habitEnabled[id]=v;save();renderHabits();renderDashboard()}
+function saveHabits(){save();renderDashboard();toast('Habit check-in saved')}
+const foods=[
+['Egg, 1 large','Non-veg',72,6.3,.4,4.8,.0,'egg'],['Chicken breast, cooked 100 g','Non-veg',165,31,0,3.6,0,'chicken'],['Fish, cooked 100 g','Non-veg',140,20,0,5,0,'fish'],['Milk, 250 ml','Vegetarian',150,8,12,8,0,'milk'],['Curd, 100 g','Vegetarian',61,3.5,4.7,3.3,0,'curd'],['Oats, dry 40 g','Vegetarian',152,5.3,27,3,4,'oats'],['Roti, 1 medium','Vegetarian',110,3,20,2.5,3,'roti'],['Rice, cooked 1 cup','Vegetarian',205,4.3,45,0.4,.6,'rice'],['Dal, cooked 150 g','Vegetarian',170,9,28,2,8,'dal'],['Rajma/chole, 1 bowl','Vegetarian',220,9,35,4,8,'rajma'],['Paneer, 100 g','Vegetarian',265,18,4,20,0,'paneer'],['Soya chunks, dry 30 g','Vegetarian',104,15,9,0.5,5,'soya'],['Roasted chana, 30 g','Vegetarian',120,6,18,2,5,'chana'],['Peanuts, 30 g','Vegetarian',170,7.5,5,14,2.5,'peanuts'],['Banana, 1 medium','Vegetarian',105,1.3,27,.4,3.1,'banana'],['Apple, 1 medium','Vegetarian',95,.5,25,.3,4.4,'apple'],['Mixed vegetables, 1 bowl','Vegetarian',90,3,15,2,5,'vegetables'],['Sprouts chaat, 1 bowl','Vegetarian',140,8,24,2,6,'sprouts'],['Besan chilla, 1 medium','Vegetarian',160,7,20,6,4,'chilla'],['Sweets, 1 serving (estimate)','Any',200,3,30,8,1,'sweet'],['Biscuits, 2 (estimate)','Any',100,1.5,15,4,0.5,'biscuits'],['Sandwich, 1 (estimate)','Any',300,12,35,12,4,'sandwich'],['Peanut butter, 1 tbsp','Vegetarian',95,4,3,8,1,'peanut butter'],['Orange, 1 medium','Vegetarian',62,1.2,15,0.2,3.1,'orange']
+];
+function calcFoods(key=today()){let totals={cal:0,protein:0,carbs:0,fat:0,fibre:0};for(let f of ((db.records[key]&&db.records[key].foods)||[])){for(let [k,field] of [['cal','cal'],['protein','protein'],['carbs','carbs'],['fat','fat'],['fibre','fibre']])totals[k]+=Number(f[field]||0)}return Object.fromEntries(Object.entries(totals).map(([k,v])=>[k,Math.round(v*10)/10]))}
+function renderFoodSearch(){let q=(document.getElementById('foodSearch').value||'').toLowerCase();let list=foods.filter(f=>f[0].toLowerCase().includes(q)||f[1].toLowerCase().includes(q)).slice(0,14);document.getElementById('foodResults').innerHTML=list.map((f,i)=>`<button class="food-option" onclick="chooseFood(${foods.indexOf(f)})"><span><b>${safe(f[0])}</b><br><span class="tag">${safe(f[1])} · ~${f[2]} kcal · ${f[3]}g protein</span></span><span>＋</span></button>`).join('')||'<p class="tiny">No match. Add a custom food below.</p>'}
+function chooseFood(i){let f=foods[i];document.getElementById('customName').value=f[0];document.getElementById('customQty').value=1;document.getElementById('customUnit').value='portion';document.getElementById('customCal').value=f[2];document.getElementById('customProtein').value=f[3];document.getElementById('customCarbs').value=f[4];document.getElementById('customFat').value=f[5];document.getElementById('customFibre').value=f[6];document.getElementById('customName').dataset.foodkey=f[7];document.getElementById('customName').scrollIntoView({behavior:'smooth',block:'center'})}
+function addCustomFood(){let name=document.getElementById('customName').value.trim();if(!name){toast('Enter a food name first');return}let qty=Math.max(.1,Number(document.getElementById('customQty').value)||1);let food={id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random()),name,meal:document.getElementById('mealType').value,qty,unit:document.getElementById('customUnit').value||'serving',cal:num('customCal')*qty,protein:num('customProtein')*qty,carbs:num('customCarbs')*qty,fat:num('customFat')*qty,fibre:num('customFibre')*qty};rec().foods.push(food);save();renderNutrition();renderDashboard();toast('Food entry saved');}
+function renderNutrition(){let t=calcFoods();for(let [id,k] of [['nCal','cal'],['nProtein','protein'],['nCarbs','carbs'],['nFat','fat'],['nFibre','fibre'],['dCal','cal'],['dProtein','protein'],['dCarbs','carbs'],['dFat','fat']]){let el=document.getElementById(id);if(el)el.innerHTML=t[k]+(k==='cal'?'':' <small>g</small>')}let w=waterTotal();document.getElementById('nWater').innerHTML=w+' <small>ml</small>';document.getElementById('waterGoal').value=db.settings.waterGoal;let list=rec().foods;renderWaterLogs();document.getElementById('foodLog').innerHTML=list.length?list.map((f,i)=>`<div class="item"><div class="between"><div><b>${safe(f.name)}</b> <span class="pill">${safe(f.meal)}</span><p>${safe(f.qty)} ${safe(f.unit)} · ~${Math.round(f.cal)} kcal · P ${round(f.protein)}g · C ${round(f.carbs)}g · F ${round(f.fat)}g · Fibre ${round(f.fibre)}g</p></div><div class="row"><button class="btn small" onclick="favouriteFood(${i})">☆ Save</button><button class="btn small" onclick="editFood(${i})">Edit</button><button class="btn small danger" onclick="deleteFood(${i})">Delete</button></div></div></div>`).join(''):'<div class="empty">Nothing logged yet. Add foods you actually ate — any food is okay.</div>';document.getElementById('favourites').innerHTML=db.favourites.length?db.favourites.map((f,i)=>`<div class="item between"><div><b>${safe(f.name)}</b><p>~${Math.round(f.cal)} kcal · P ${round(f.protein)}g</p></div><div class="row"><button class="btn small" onclick="addFavourite(${i})">Add today</button><button class="btn small danger" onclick="removeFavourite(${i})">×</button></div></div>`).join(''):'<div class="empty">Tap ☆ Save on a logged food to keep a favourite.</div>';document.getElementById('groceryList').innerHTML=db.groceries.length?db.groceries.map((g,i)=>`<label class="checkrow"><input type="checkbox" ${g.done?'checked':''} onchange="db.groceries[${i}].done=this.checked;save();renderNutrition()"><span style="${g.done?'text-decoration:line-through;opacity:.6':''}">${safe(g.name)}</span><button class="btn small danger" onclick="removeGrocery(${i})">×</button></label>`).join(''):'<div class="empty">Your list is empty.</div>';document.getElementById('foodGuide').innerHTML=foods.map((f,i)=>`<div class="item between"><div><b>${safe(f[0])}</b><p>${safe(f[1])} · ~${f[2]} kcal · P ${f[3]}g · C ${f[4]}g · F ${f[5]}g · Fibre ${f[6]}g</p></div><button class="btn small" onclick="chooseFood(${i});document.getElementById('mealType').focus()">Use</button></div>`).join('');renderFoodSearch()}
+function round(n){return Math.round(Number(n||0)*10)/10}
+function editFood(i){let f=rec().foods[i];let qty=prompt('Quantity (current '+f.qty+')',f.qty);if(qty===null)return;qty=Number(qty);if(!Number.isFinite(qty)||qty<=0){toast('Quantity must be greater than zero');return}let ratio=qty/f.qty;f.qty=qty;for(let k of ['cal','protein','carbs','fat','fibre'])f[k]*=ratio;save();renderNutrition();renderDashboard()}
+function deleteFood(i){if(!confirm('Delete this food entry?'))return;rec().foods.splice(i,1);save();renderNutrition();renderDashboard()}
+function favouriteFood(i){let f=rec().foods[i];db.favourites.unshift({...f,id:undefined,meal:undefined,qty:1,unit:f.unit});db.favourites=db.favourites.slice(0,30);save();renderNutrition();toast('Saved to favourites')}
+function addFavourite(i){let f={...db.favourites[i],id:String(Date.now()+Math.random()),meal:document.getElementById('mealType').value};rec().foods.push(f);save();renderNutrition();renderDashboard();toast('Favourite added')}
+function removeFavourite(i){db.favourites.splice(i,1);save();renderNutrition()}
+function waterTotal(r=rec()){return Number(r.water||0)+(r.waterEntries||[]).reduce((n,e)=>n+Number(e.ml||0),0)}
+function addWater(ml){let r=rec();r.waterEntries=r.waterEntries||[];r.waterEntries.push({id:String(Date.now()+Math.random()),ml:Number(ml),time:new Date().toISOString()});save();renderDashboard();renderWaterLogs();if(document.getElementById('nutrition').classList.contains('active'))renderNutrition();toast(ml+' ml added')}
+function undoWater(){let r=rec();r.waterEntries=r.waterEntries||[];if(!r.waterEntries.length){toast('No recent water entry to undo');return}r.waterEntries.pop();save();renderDashboard();renderWaterLogs();if(document.getElementById('nutrition').classList.contains('active'))renderNutrition();toast('Last water entry removed')}
+function removeWaterEntry(id){let r=rec();r.waterEntries=(r.waterEntries||[]).filter(e=>e.id!==id);save();renderDashboard();renderWaterLogs();if(document.getElementById('nutrition').classList.contains('active'))renderNutrition()}
+function renderWaterLogs(){let r=rec(),entries=(r.waterEntries||[]).slice().reverse();let html=entries.length?entries.map(e=>`<div class="between tiny" style="padding:5px 0"><span>${e.ml} ml · ${new Date(e.time).toLocaleTimeString([], {hour:'numeric',minute:'2-digit'})}</span><button class="btn small danger" onclick="removeWaterEntry('${e.id}')">Remove</button></div>`).join(''):'<p class="tiny">No individual water entries yet.</p>';for(let id of ['waterLogMini','waterLog']){let el=document.getElementById(id);if(el)el.innerHTML=html}}
+function timeLabel(iso){return iso?new Date(iso).toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}):'—'}
+function renderWorkoutSession(r=rec(document.getElementById('workoutDate').value||today())){let w=r.workout||{},active=!!w.startedAt&&!w.endedAt;let clock=document.getElementById('sessionClock'),meta=document.getElementById('sessionMeta'),status=document.getElementById('sessionStatus'),start=document.getElementById('startWorkoutBtn'),finish=document.getElementById('finishWorkoutBtn');if(!clock)return;let elapsed=active?Math.max(0,Math.floor((Date.now()-new Date(w.startedAt).getTime())/60000)):null;clock.textContent=active?('In progress · '+Math.floor(elapsed/60)+'h '+String(elapsed%60).padStart(2,'0')+'m'):(w.startedAt&&w.endedAt?((w.durationMinutes||0)+' min'):'Not started');meta.textContent=w.startedAt?(timeLabel(w.startedAt)+(w.endedAt?' – '+timeLabel(w.endedAt):' · started')+(w.durationMinutes!=null?' · '+w.durationMinutes+' minutes':'')):'Tap Start when you actually begin — any time of day.';status.textContent=active?'In progress':(w.endedAt?'Finished':'Ready');start.disabled=active;finish.disabled=!active}
+function startWorkoutSession(){let key=document.getElementById('workoutDate').value||today();let w=rec(key).workout;if(w.startedAt&&!w.endedAt){toast('This session is already running');return}w.startedAt=new Date().toISOString();w.endedAt=null;w.durationMinutes=null;save();renderWorkout();toast('Workout started at '+timeLabel(w.startedAt))}
+function finishWorkoutSession(){let key=document.getElementById('workoutDate').value||today();let w=rec(key).workout;if(!w.startedAt||w.endedAt){toast('Start a workout session first');return}w.endedAt=new Date().toISOString();w.durationMinutes=Math.max(1,Math.round((new Date(w.endedAt)-new Date(w.startedAt))/60000));save();renderWorkout();renderDashboard();toast('Session saved · '+w.durationMinutes+' minutes')}
+function saveWaterGoal(){db.settings.waterGoal=Math.min(6000,Math.max(250,num('waterGoal')));save();renderDashboard();toast('Water reference saved')}
+function addGrocery(){let name=document.getElementById('groceryName').value.trim();if(!name)return;db.groceries.push({name,done:false});document.getElementById('groceryName').value='';save();renderNutrition()}
+function removeGrocery(i){db.groceries.splice(i,1);save();renderNutrition()}
+function saveCheckin(){rec().checkin={mood:document.getElementById('mood').value,energy:document.getElementById('energy').value,note:document.getElementById('checkNote').value};save();renderDashboard();toast('Check-in saved')}
+function saveSleep(){let bed=document.getElementById('bedtime').value,wake=document.getElementById('waketime').value;if(!bed||!wake){toast('Choose bedtime and wake-up time');return}let [bh,bm]=bed.split(':').map(Number),[wh,wm]=wake.split(':').map(Number);let mins=wh*60+wm-(bh*60+bm);if(mins<=0)mins+=1440;rec().sleep={bed,wake,minutes:mins,quality:document.getElementById('sleepQuality').value,energy:document.getElementById('sleepEnergyInput').value,note:document.getElementById('sleepNote').value};save();renderDashboard();toast('Sleep record saved')}
+function renderSleep(){let s=rec().sleep;if(s){document.getElementById('bedtime').value=s.bed;document.getElementById('waketime').value=s.wake;document.getElementById('sleepQuality').value=s.quality||'';document.getElementById('sleepEnergyInput').value=s.energy||'';document.getElementById('sleepNote').value=s.note||''}renderHabits()}
+function saveJournal(){rec().journal={mood:document.getElementById('journalMood').value,energy:document.getElementById('journalEnergy').value,win:document.getElementById('journalWin').value,lesson:document.getElementById('journalLesson').value,note:document.getElementById('journalNote').value,support:document.getElementById('journalSupport').value,updated:new Date().toISOString()};save();renderJournal();toast('Private entry saved locally')}
+function loadJournalDate(){let key=document.getElementById('journalDate').value||today(),j=rec(key).journal;for(let [id,k] of [['journalMood','mood'],['journalEnergy','energy'],['journalWin','win'],['journalLesson','lesson'],['journalNote','note'],['journalSupport','support']])document.getElementById(id).value=j?.[k]||'';renderJournalHistory()}
+function deleteJournal(){let key=document.getElementById('journalDate').value||today();if(!rec(key).journal){toast('No journal entry for this date');return}if(!confirm('Delete the journal entry for '+key+'?'))return;rec(key).journal=null;save();loadJournalDate();toast('Entry deleted')}
+function renderJournal(){document.getElementById('journalDate').value=document.getElementById('journalDate').value||today();loadJournalDate()}
+function renderJournalHistory(){let keys=Object.keys(db.records).filter(k=>db.records[k].journal).sort().reverse();document.getElementById('journalHistory').innerHTML=keys.length?keys.map(k=>{let j=db.records[k].journal;return `<div class="item"><b>${fmtDate(k,{month:'short',day:'numeric',year:'numeric'})}</b><p>${safe(j.mood||'')} ${j.energy?'· Energy '+safe(j.energy)+'/5':''}</p>${j.win?'<p><b>Win:</b> '+safe(j.win)+'</p>':''}${j.lesson?'<p><b>Lesson:</b> '+safe(j.lesson)+'</p>':''}${j.note?'<p>'+safe(j.note.slice(0,160))+(j.note.length>160?'…':'')+'</p>':''}<button class="btn small" onclick="document.getElementById('journalDate').value='${k}';loadJournalDate()">Open</button></div>`}).join(''):'<div class="empty">No saved journal entries yet.</div>'}
+function saveProgress(){let r=rec();r.measurements.push({date:today(),push:num('maxPush'),squat:num('maxSquat'),plank:num('maxPlank'),weight:num('weight')||null,energy:document.getElementById('progressEnergy').value||null});save();renderProgress();toast('Optional progress check saved')}
+function saveHeight(){let h=num('heightCm');if(h<50||h>250){toast('Enter a height between 50 and 250 cm, or leave blank');return}rec().measurements.push({date:today(),height:h});save();toast('Optional measurement saved');renderProgress()}
+function dayRecord(key){return db.records[key]||null}
+let walkTimerHandle=null,walkSession=null;
+function fmtClock(seconds){let s=Math.max(0,Math.floor(seconds||0)),h=Math.floor(s/3600),m=Math.floor((s%3600)/60),r=s%60;return [h,m,r].map(x=>String(x).padStart(2,'0')).join(':')}
+function walkElapsed(){if(!walkSession)return 0;return walkSession.elapsed+(walkSession.running?Math.max(0,Math.floor((Date.now()-walkSession.startedAt)/1000)):0)}
+function renderWalkTimer(){let clock=document.getElementById('walkClock');if(!clock)return;clock.textContent=fmtClock(walkElapsed());document.getElementById('walkSessionState').textContent=!walkSession?'Not started':walkSession.running?'Walking': 'Paused';document.getElementById('walkStartBtn').textContent=walkSession&&!walkSession.running?'▶ Resume':'▶ Start';document.getElementById('walkPauseBtn').disabled=!walkSession||!walkSession.running;document.getElementById('walkStopBtn').disabled=!walkSession;}
+function startWalkSession(){if(!walkSession)walkSession={startedAt:Date.now(),elapsed:0,running:true};else if(!walkSession.running){walkSession.startedAt=Date.now();walkSession.running=true}if(walkTimerHandle)clearInterval(walkTimerHandle);walkTimerHandle=setInterval(renderWalkTimer,1000);renderWalkTimer();toast('Walking session started')}
+function pauseWalkSession(){if(!walkSession||!walkSession.running)return;walkSession.elapsed=walkElapsed();walkSession.running=false;if(walkTimerHandle){clearInterval(walkTimerHandle);walkTimerHandle=null}renderWalkTimer();toast('Walking session paused')}
+function stopWalkSession(){if(!walkSession)return;let seconds=walkElapsed();if(walkTimerHandle){clearInterval(walkTimerHandle);walkTimerHandle=null}let mins=Math.max(0,Math.round(seconds/60));let sessionSteps=prompt('Optional: enter the steps counted during this walk. Leave blank if you do not know.','');let count=null;if(sessionSteps!==null&&sessionSteps.trim()!==''){let v=Number(sessionSteps);if(Number.isInteger(v)&&v>=0)count=v;else{toast('Session saved without a step count because that value was invalid')}}let estimateLow=Math.round(mins*2.5),estimateHigh=Math.round(mins*4);rec().steps.sessions.push({date:today(),durationSec:seconds,steps:count,caloriesLow:estimateLow,caloriesHigh:estimateHigh,endedAt:new Date().toISOString()});save();walkSession=null;renderWalkTimer();renderStepDashboard();renderProgress();document.getElementById('walkSessionSummary').textContent=`Last walk: ${fmtClock(seconds)} · estimated ${estimateLow}–${estimateHigh} kcal${count!==null?' · '+count.toLocaleString()+' session steps':''}`;toast('Walking session saved')}
+function saveStepTotal(){let el=document.getElementById('stepTotalInput'),v=el.value.trim();if(v===''||!Number.isInteger(Number(v))||Number(v)<0){toast('Enter a valid whole-number step total');return}rec().steps.total=Number(v);rec().steps.updatedAt=new Date().toISOString();let goal=Number(document.getElementById('stepGoalInput').value);if(Number.isInteger(goal)&&goal>0)db.stepGoal=goal;save();renderStepDashboard();renderProgress();toast('Today’s phone step total saved')}
+function clearStepGoal(){db.stepGoal=0;document.getElementById('stepGoalInput').value='';save();renderStepDashboard();toast('Optional step goal cleared')}
+function renderStepDashboard(){let r=rec(),steps=r.steps?.total,goal=Number(db.stepGoal)||0;document.getElementById('stepMetric').innerHTML=(steps===null||steps===undefined?'—':Number(steps).toLocaleString())+' <small>steps recorded</small>';document.getElementById('stepTotalInput').value=steps??'';document.getElementById('stepGoalInput').value=goal||'';document.getElementById('stepBar').style.width=goal&&steps!==null&&steps!==undefined?Math.min(100,steps/goal*100)+'%':'0%';document.getElementById('stepGoalHint').textContent=goal?(steps===null||steps===undefined?'Optional reference: '+goal.toLocaleString()+' steps. Add today’s phone total.':Math.min(100,Math.round(steps/goal*100))+'% of your optional '+goal.toLocaleString()+'-step reference.'):'No step goal set — your total is still useful on its own.';document.getElementById('stepStatus').textContent=steps===null||steps===undefined?'Not entered':'Saved';if(!walkSession)renderWalkTimer();let sessions=r.steps?.sessions||[];let last=sessions[sessions.length-1],low=sessions.reduce((a,x)=>a+(Number(x.caloriesLow)||0),0),high=sessions.reduce((a,x)=>a+(Number(x.caloriesHigh)||0),0);document.getElementById('walkSessionSummary').textContent=last?`Last walk: ${fmtClock(last.durationSec)} · estimated ${last.caloriesLow}–${last.caloriesHigh} kcal${last.steps!==null?' · '+Number(last.steps).toLocaleString()+' session steps':''}`:'No walking sessions saved yet.';document.getElementById('walkCaloriesToday').textContent=sessions.length?`${low}–${high} kcal (rough estimate)`:'—';document.getElementById('walkSessionHistory').innerHTML=sessions.length?sessions.slice().reverse().slice(0,5).map(x=>`<div class=\"item between\"><span>${new Date(x.endedAt).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})} · ${fmtClock(x.durationSec)}</span><span>${x.caloriesLow}–${x.caloriesHigh} kcal</span></div>`).join(''):'<p class=\"tiny muted\">Saved walking sessions will appear here.</p>'}
+let assistantLastReply='Hello! I am FitTrack Assistant.';
+function lastSevenRecords(){return Array.from({length:7},(_,i)=>{let k=offsetDate(today(),i-6);return {key:k,record:dayRecord(k)}})}
+function smartMetrics(){let days=lastSevenRecords(),stepVals=days.map(x=>x.record?.steps?.total).filter(v=>Number.isFinite(Number(v))&&v!==null),sleepVals=days.map(x=>x.record?.sleep?.minutes).filter(v=>Number.isFinite(Number(v))&&v>0),activeDays=days.filter(x=>x.record?.workout?.done||(x.record?.steps?.sessions||[]).length>0).length,workoutDays=days.filter(x=>x.record?.workout?.done).length;return {days,stepAverage:stepVals.length?Math.round(stepVals.reduce((a,b)=>a+Number(b),0)/stepVals.length):null,stepDays:stepVals.length,sleepAverage:sleepVals.length?Math.round(sleepVals.reduce((a,b)=>a+Number(b),0)/sleepVals.length):null,sleepDays:sleepVals.length,activeDays,workoutDays}}
+function buildSmartBriefing(){let r=rec(),m=smartMetrics(),steps=r.steps?.total,lines=[];let greeting='Here is your check-in for today.';if(r.checkin?.energy&&Number(r.checkin.energy)<=2)lines.push('Your check-in shows low energy. Consider a lighter day, gentle movement or rest; you do not need to force a workout.');else if(r.checkin?.mood==='Stressed'||r.checkin?.mood==='Low')lines.push('You logged that today feels '+r.checkin.mood.toLowerCase()+'. Keep the plan flexible and choose something that feels manageable.');else if(r.workout?.done||r.workout?.rest)lines.push(r.workout.done?'Your workout is marked complete. Recovery and normal daily movement are enough for the rest of the day.':'You marked today as a recovery day. Rest is part of a balanced routine.');else lines.push('If you feel up to it, a comfortable short walk or a few minutes of mobility can be a simple way to move today.');
+if(steps===null||steps===undefined)lines.push('Your phone step total has not been entered yet. Add it when convenient to build an accurate history.');else lines.push('You have recorded '+Number(steps).toLocaleString()+' steps today.');
+if(r.sleep)lines.push('Last sleep entry: '+Math.floor(r.sleep.minutes/60)+'h '+(r.sleep.minutes%60)+'m.');else lines.push('No sleep entry yet for the latest night; add one if you want sleep trends in your weekly view.');
+if(m.stepAverage!==null)lines.push('Your recorded 7-day step average is '+m.stepAverage.toLocaleString()+' across '+m.stepDays+' logged day(s).');
+if(m.sleepAverage!==null)lines.push('Your recorded 7-day average sleep is '+Math.floor(m.sleepAverage/60)+'h '+(m.sleepAverage%60)+'m across '+m.sleepDays+' night(s).');
+let brief='<b>'+greeting+'</b><ul>'+lines.map(x=>'<li>'+safe(x)+'</li>').join('')+'</ul><div class="tiny muted">Insights use only records saved in this browser. Missing data is not treated as zero.</div>';
+document.getElementById('smartBriefing').innerHTML=brief;document.getElementById('smartStats').innerHTML=[['Step average',m.stepAverage===null?'—':m.stepAverage.toLocaleString(),'steps · logged days only'],['Workout days',m.workoutDays+'/7','completed sessions'],['Sleep average',m.sleepAverage===null?'—':(Math.floor(m.sleepAverage/60)+'h '+(m.sleepAverage%60)+'m'),'logged nights']].map(a=>'<div class="smart-stat"><b>'+safe(a[1])+'</b><span>'+safe(a[0])+' · '+safe(a[2])+'</span></div>').join('');}
+function assistantReply(message){assistantLastReply=message;let out=document.getElementById('assistantOutput');if(out)out.textContent=message;let st=document.getElementById('aiStatus');if(st)st.textContent='Updated';}
+function runAssistantCommand(){let el=document.getElementById('assistantCommand'),raw=(el?.value||'').trim(),q=raw.toLowerCase();if(!q){assistantReply('Type or speak a command first. Try “How am I doing?” or “Show progress”.');return}let m=smartMetrics(),r=rec(),reply='I can help with app navigation and your saved activity. Try “how am I doing”, “show steps”, “show progress”, “open workout”, “open sleep”, “open food”, “start walking”, “pause walking” or “stop walking”.';
+if(/how am i doing|today summary|daily summary|briefing|status/.test(q)){buildSmartBriefing();reply='I refreshed your daily briefing above. Your last 7 days include '+m.workoutDays+' completed workout days and '+m.activeDays+' days with a logged workout or walking session.';}
+else if(/show.*step|step.*progress|today.*step/.test(q)){document.getElementById('stepsCard')?.scrollIntoView({behavior:'smooth',block:'center'});reply=r.steps?.total==null?'No phone step total is saved for today yet. Enter the number shown by your phone step counter in the Steps card.':'Today you have '+Number(r.steps.total).toLocaleString()+' recorded steps.';}
+else if(/show.*progress|weekly.*progress|history/.test(q)){showSection('progress');reply='Opening your progress history. It shows saved steps, workouts, sleep and activity records.';}
+else if(/open workout|workout page/.test(q)){showSection('workout');reply='Opening your workout plan.';}
+else if(/open sleep|sleep page/.test(q)){showSection('sleep');reply='Opening sleep and daily habits.';}
+else if(/open food|open nutrition|food page/.test(q)){showSection('nutrition');reply='Opening your food log.';}
+else if(/open calendar/.test(q)){showSection('calendar');reply='Opening your activity calendar.';}
+else if(/open journal/.test(q)){showSection('journal');reply='Opening your private journal.';}
+else if(/start walking|begin walk/.test(q)){startWalkSession();reply='Walking timer started. Move at a comfortable pace and stop whenever you need.';}
+else if(/pause walking|pause walk/.test(q)){pauseWalkSession();reply='Walking timer paused.';}
+else if(/stop walking|finish walk/.test(q)){if(walkSession){stopWalkSession();reply='I saved your walking session. The calorie number is only a broad estimate.'}else reply='There is no active walking session right now.';}
+else if(/water/.test(q)){showSection('nutrition');reply='Opening your water log. You can add the amount you drank there.';}
+else if(/sleep average/.test(q)){reply=m.sleepAverage===null?'There are no sleep records in the last 7 days yet.':'Your average recorded sleep over '+m.sleepDays+' logged night(s) is '+Math.floor(m.sleepAverage/60)+' hours and '+(m.sleepAverage%60)+' minutes.';}
+else if(/step average/.test(q)){reply=m.stepAverage===null?'There are no saved step totals in the last 7 days yet.':'Your average recorded steps are '+m.stepAverage.toLocaleString()+' across '+m.stepDays+' logged day(s).';}
+else if(/focus start|start focus/.test(q)){startFocus();reply='Your focus timer is running.';}
+else if(/focus pause|pause focus/.test(q)){pauseFocus();reply='Your focus timer is paused.';}
+else if(/focus reset|reset focus/.test(q)){resetFocus();reply='Your focus timer has been reset.';}
+else if(/open search|search records/.test(q)){openGlobalSearch();reply='Search opened. Your records are searched only on this device.';}
+else if(/export backup|backup data/.test(q)){exportBackup();reply='Your FitTrack backup export has been started.';}
+else if(/help|what can you do/.test(q)){reply='I can summarize your saved records, open app sections, control the walking timer and focus timer, search your records, and export a backup. Try “focus start”, “open search” or “export backup”.';}
+assistantReply(reply);if(el)el.value='';}
+function startVoiceCommand(){let SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){assistantReply('Voice input is not supported in this browser. You can still type commands, and the Read button may speak the reply.');return}let recognition=new SR();recognition.lang='en-IN';recognition.interimResults=false;recognition.maxAlternatives=1;let btn=document.getElementById('voiceCommandBtn');if(btn)btn.textContent='Listening…';recognition.onresult=e=>{let heard=e.results?.[0]?.[0]?.transcript||'';document.getElementById('assistantCommand').value=heard;runAssistantCommand()};recognition.onerror=()=>assistantReply('I could not hear that clearly. Check microphone permission or type your command.');recognition.onend=()=>{if(btn)btn.textContent='🎙 Speak'};try{recognition.start()}catch(e){if(btn)btn.textContent='🎙 Speak';assistantReply('Voice input could not start. Please type your command instead.')}}
+function speakAssistant(){if(!('speechSynthesis' in window)){assistantReply(assistantLastReply+' (Speech output is not supported in this browser.)');return}window.speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(assistantLastReply);u.lang='en-IN';u.rate=1;window.speechSynthesis.speak(u)}
+// FitTrack Max: persistent focus timer, global local search, browser capabilities and in-page reminders.
+let focusTick=null;
+function focusRemaining(){let f=db.focusTimer||fresh().focusTimer;if(f.running&&f.startedAt)return Math.max(0,Number(f.remainingSec||0)-Math.floor((Date.now()-Number(f.startedAt))/1000));return Math.max(0,Number(f.remainingSec??f.durationSec??1500))}
+function fmtFocus(sec){sec=Math.max(0,Math.floor(sec));return String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0')}
+function renderFocus(){let f=db.focusTimer||fresh().focusTimer,remain=focusRemaining(),duration=Math.max(1,Number(f.durationSec)||1500),pct=Math.max(0,Math.min(100,(duration-remain)/duration*100));let clock=document.getElementById('focusClock');if(!clock)return;clock.textContent=fmtFocus(remain);document.getElementById('focusRing').style.setProperty('--focus-progress',pct+'%');document.getElementById('focusStatus').textContent=f.running?'Session in progress':remain===0?'Session complete':'Ready when you are';document.getElementById('focusHint').textContent=f.label?(f.label+' · '+(f.running?'Keep a comfortable pace':remain===0?'Finished':'Paused / ready')):(f.running?'Stay with one task at a time':remain===0?'Nice work. Take a break if you want.':'No session running');document.getElementById('focusStartBtn').textContent=f.running?'Running…':remain===0?'Start again':'▶ Start focus';document.getElementById('focusStartBtn').disabled=!!f.running;document.getElementById('focusPauseBtn').disabled=!f.running;let sel=document.getElementById('focusMinutes');if(sel&&!f.running)sel.value=String(Math.round(duration/60));let label=document.getElementById('focusLabel');if(label&&document.activeElement!==label)label.value=f.label||''}
+function setFocusLength(value){let mins=Math.max(5,Math.min(120,Number(value)||25)),f=db.focusTimer;f.durationSec=mins*60;f.remainingSec=mins*60;f.running=false;f.startedAt=null;save();renderFocus();if(focusTick){clearInterval(focusTick);focusTick=null}}
+function startFocus(){let f=db.focusTimer;if(f.running)return;if(f.remainingSec<=0)f.remainingSec=f.durationSec||1500;f.label=(document.getElementById('focusLabel')?.value||'').trim().slice(0,60);f.startedAt=Date.now();f.running=true;save();renderFocus();if(focusTick)clearInterval(focusTick);focusTick=setInterval(tickFocus,500);toast('Focus session started')}
+function pauseFocus(){let f=db.focusTimer;if(!f.running)return;f.remainingSec=focusRemaining();f.running=false;f.startedAt=null;save();if(focusTick){clearInterval(focusTick);focusTick=null}renderFocus();toast('Focus session paused')}
+function resetFocus(){let f=db.focusTimer;f.running=false;f.startedAt=null;f.remainingSec=f.durationSec||1500;save();if(focusTick){clearInterval(focusTick);focusTick=null}renderFocus();toast('Focus timer reset')}
+function tickFocus(){let f=db.focusTimer;if(!f?.running){if(focusTick)clearInterval(focusTick);return}let left=focusRemaining();if(left<=0){f.remainingSec=0;f.running=false;f.startedAt=null;save();clearInterval(focusTick);focusTick=null;renderFocus();toast('Focus session complete. Take a comfortable break if you want.');notifyUser('FitTrack focus session','Your focus session is complete. Take a break if you want.');assistantReply('Your focus session is complete. You can take a break, continue later or choose another task.')}else renderFocus()}
+function openGlobalSearch(){let modal=document.getElementById('globalSearch');modal.classList.add('open');let input=document.getElementById('globalSearchInput');setTimeout(()=>input?.focus(),30)}
+function closeGlobalSearch(){document.getElementById('globalSearch')?.classList.remove('open')}
+function runGlobalSearch(){let q=(document.getElementById('globalSearchInput')?.value||'').trim().toLowerCase(),root=document.getElementById('globalSearchResults');if(!q){root.innerHTML='<div class="empty">Start typing to search your saved records.</div>';return}let found=[];for(let [date,r] of Object.entries(db.records||{})){let add=(type,value,section)=>{if(value&&String(value).toLowerCase().includes(q))found.push({date,type,value:String(value).slice(0,220),section})};(r.foods||[]).forEach(x=>add('Food',x.name+' · '+(x.meal||''),'nutrition'));add('Journal',r.journal?[r.journal.win,r.journal.lesson,r.journal.note,r.journal.support].filter(Boolean).join(' · '):'','journal');add('Check-in',r.checkin?[r.checkin.mood,r.checkin.note].filter(Boolean).join(' · '):'','dashboard');add('Workout note',r.workout?.note,'workout');add('Steps',r.steps?.total!=null?String(r.steps.total)+' steps':'','progress');add('Sleep',r.sleep?String(Math.round(r.sleep.minutes/60*10)/10)+' hours':'','sleep');(r.steps?.sessions||[]).forEach(x=>add('Walk',x.note||'walking session','progress'))}found.sort((a,b)=>b.date.localeCompare(a.date));root.innerHTML=found.length?found.slice(0,40).map(x=>`<button class="search-result" onclick="closeGlobalSearch();selectCalendarDate('${safe(x.date)}');showSection('calendar')"><b>${safe(x.type)} · ${safe(fmtDate(x.date,{month:'short',day:'numeric',year:'numeric'}))}</b><div class="tiny muted">${safe(x.value)}</div></button>`).join(''):'<div class="empty">No matching saved records found.</div>';if(found.length>40)root.innerHTML+=`<p class="tiny muted">Showing first 40 matches.</p>`}
+function refreshCapabilities(){let secure=window.isSecureContext?'Secure context':'Local / non-secure context',speech=!!(window.SpeechRecognition||window.webkitSpeechRecognition),tts='speechSynthesis'in window,notify='Notification'in window?Notification.permission:'Not supported',storage='Available';try{localStorage.setItem('__ft_probe','1');localStorage.removeItem('__ft_probe')}catch(e){storage='Restricted'}let rows=[['Local storage',storage],['Voice recognition',speech?'Browser-supported':'Not supported'],['Spoken replies',tts?'Browser-supported':'Not supported'],['Notifications',notify],['Secure context',secure],['Online status',navigator.onLine?'Online':'Offline']];let el=document.getElementById('capabilityGrid');if(el)el.innerHTML=rows.map(x=>`<div class="capability"><b>${safe(x[0])}</b><span>${safe(x[1])}</span></div>`).join('')}
+async function requestNotifications(){if(!('Notification'in window)){toast('Notifications are not supported by this browser.');return}try{let permission=await Notification.requestPermission();refreshCapabilities();toast(permission==='granted'?'Notifications enabled for this browser.':'Notification permission was not granted.')}catch(e){toast('Could not request notification permission in this browser.') }}
+function notifyUser(title,body){if('Notification'in window&&Notification.permission==='granted'&&document.visibilityState!=='visible'){try{new Notification(title,{body,tag:'fittrack-'+today()})}catch(e){}}}
+function testNotification(){if(!('Notification'in window)){toast('Notifications are not supported here.');return}if(Notification.permission==='granted'){try{new Notification('FitTrack test',{body:'Notifications are enabled while browser delivery is available.'});toast('Test notification sent.')}catch(e){toast('Notification could not be shown.')}}else{toast('Tap Enable notifications first.')}}
+function checkInPageReminders(){if(!db.reminders)return;let now=new Date(),hh=String(now.getHours()).padStart(2,'0'),mm=String(now.getMinutes()).padStart(2,'0'),clock=hh+':'+mm,day=today();for(let [key,item] of Object.entries(db.reminders)){if(!item?.enabled||item.time!==clock)continue;let token=day+'_'+key;if(db.reminderSent[token])continue;db.reminderSent[token]=true;save();let title=({workout:'Movement check-in',food:'Food log check-in',water:'Water check-in',sleep:'Sleep check-in',journal:'Journal check-in'})[key]||'FitTrack reminder';notifyUser(title,'A gentle reminder you enabled in FitTrack. Open the app if you want to check in.');if(document.visibilityState==='visible')toast(title+' · Your optional reminder is due.')}}
+function handleMaxKeys(e){if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openGlobalSearch()}else if(e.key==='/'&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)){e.preventDefault();openGlobalSearch()}else if(e.key==='Escape')closeGlobalSearch()}
+
+function renderDashboard(){let r=rec(),enabled=db.habitEnabled||Object.fromEntries(habits.map(x=>[x[0],true])),ids=habits.filter(([id])=>enabled[id]),done=ids.filter(([id])=>r.habits[id]).length;document.getElementById('todayLabel').textContent=fmtDate(today(),{weekday:'long',month:'short',day:'numeric'});document.getElementById('todayPill').textContent=fmtDate(today(),{weekday:'long',month:'long',day:'numeric'});document.getElementById('habitMetric').textContent=done+'/'+ids.length;document.getElementById('habitBar').style.width=(ids.length?done/ids.length*100:0)+'%';document.getElementById('waterMetric').innerHTML=waterTotal(r)+' <small>/ '+db.settings.waterGoal/1000+' L</small>';document.getElementById('sleepMetric').textContent=r.sleep?Math.floor(r.sleep.minutes/60)+'h '+r.sleep.minutes%60+'m':'—';document.getElementById('sleepEnergy').textContent=r.sleep?'Quality '+(r.sleep.quality||'—')+'/5 · Energy '+(r.sleep.energy||'—')+'/5':'Log your sleep & energy';document.getElementById('foodMetric').innerHTML=r.foods.length+' <small>entries</small>';let t=calcFoods();document.getElementById('nutritionMini').textContent='~'+Math.round(t.cal)+' kcal · '+round(t.protein)+' g protein';for(let [id,k] of [['dCal','cal'],['dProtein','protein'],['dCarbs','carbs'],['dFat','fat']])document.getElementById(id).innerHTML=t[k]+(k==='cal'?'':' <small>g</small>');let p=planFor(),n=workoutItems();document.getElementById('dashWorkout').innerHTML=`<div class="row"><span class="pill">${safe(p.name)}</span><span class="pill">${r.workout.done?'Completed':r.workout.rest?'Rest / recovery':'Not marked complete'}</span></div><div class="item"><b>${n[0][0]}</b><p>${n[0][1]} · ${n.length} planned items</p></div>`;document.getElementById('workoutPill').textContent=r.workout.done?'Completed':r.workout.rest?'Recovery':'Plan';document.getElementById('mobilityPill').textContent=r.mobility.done?'Completed':'Not logged';document.getElementById('dashMobility').innerHTML=`<div class="metric">${Object.values(r.mobility.checks).filter(Boolean).length}/${mobilityItems.length} <small>movements checked</small></div>`;let week=Array.from({length:7},(_,i)=>offsetDate(today(),i-6));document.getElementById('weeklyStrip').innerHTML=week.map(k=>{let x=dayRecord(k),n=(x?.workout?.done?1:0)+(x?.mobility?.done?1:0);return `<div><span>${fmtDate(k,{weekday:'short'} )}</span><b>${n}</b><span class="tiny">${x?.workout?.rest?'rest':n?'saved':'—'}</span></div>`}).join('');if(r.checkin){document.getElementById('mood').value=r.checkin.mood||'';document.getElementById('energy').value=r.checkin.energy||'';document.getElementById('checkNote').value=r.checkin.note||''}renderStepDashboard();buildSmartBriefing()}
+function renderWeeklyPlan(){document.getElementById('weeklyPlan').innerHTML=Object.entries(plan).map(([day,p])=>`<div class="item"><div class="between"><b>${day} · ${p.name}</b><span class="tiny muted">${p.items.length} items</span></div><p>${p.items.slice(0,3).map(x=>x[0]).join(' · ')}${p.items.length>3?'…':''}</p></div>`).join('')}
+let calMonth=new Date(parseDate(today()).getFullYear(),parseDate(today()).getMonth(),1),selectedDate=today();
+function hasRecords(k){let r=db.records[k];return !!r&&(!!r.workout?.done||!!r.workout?.rest||!!r.mobility?.done||!!r.sleep||!!r.foods?.length||!!r.journal||Object.values(r.habits||{}).some(Boolean)||!!r.checkin||r.steps?.total!==null&&r.steps?.total!==undefined||!!r.steps?.sessions?.length)}
+function renderCalendar(){document.getElementById('monthTitle').textContent=calMonth.toLocaleDateString(undefined,{month:'long',year:'numeric'});let first=new Date(calMonth.getFullYear(),calMonth.getMonth(),1),start=(first.getDay()+6)%7,days=new Date(calMonth.getFullYear(),calMonth.getMonth()+1,0).getDate(),prev=new Date(calMonth.getFullYear(),calMonth.getMonth(),0).getDate();let names=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];let out=names.map(n=>`<div class="tiny muted" style="text-align:center;padding:5px">${n}</div>`).join('');for(let i=0;i<42;i++){let day=i-start+1,k,muted=false;if(day<1){day=prev+day;muted=true;k=dateKey(new Date(calMonth.getFullYear(),calMonth.getMonth()-1,day))}else if(day>days){day-=days;muted=true;k=dateKey(new Date(calMonth.getFullYear(),calMonth.getMonth()+1,day))}else k=dateKey(new Date(calMonth.getFullYear(),calMonth.getMonth(),day));out+=`<button class="day ${muted?'mutedday':''} ${k===selectedDate?'selected':''} ${k===today()?'today':''}" onclick="selectCalendarDate('${k}')"><span>${day}</span><span>${hasRecords(k)?'<i class="dot"></i>':''}</span></button>`}document.getElementById('calendarGrid').innerHTML=out;renderDateDetails()}
+function selectCalendarDate(k){selectedDate=k;calMonth=new Date(parseDate(k).getFullYear(),parseDate(k).getMonth(),1);renderCalendar()}
+function moveMonth(n){calMonth.setMonth(calMonth.getMonth()+n);renderCalendar()}
+function renderDateDetails(){let r=dayRecord(selectedDate),p=planFor(selectedDate);document.getElementById('selectedDateTitle').textContent=fmtDate(selectedDate,{weekday:'long',month:'long',day:'numeric',year:'numeric'});if(!r){document.getElementById('dateDetails').innerHTML=`<div class="item"><b>Planned workout</b><p>${safe(p.name)} · ${p.items.length} items</p></div><div class="empty">No records saved for this date.</div>`;return}let t=calcFoods(selectedDate);document.getElementById('dateDetails').innerHTML=`<div class="item"><b>Planned workout</b><p>${safe(p.name)} · ${r.workout?.done?'Completed':r.workout?.rest?'Rest / recovery':'Not marked complete'}</p><p>${Object.values(r.workout?.checks||{}).filter(Boolean).length} exercises checked</p></div><div class="item"><b>Food log</b><p>${r.foods.length} entries · ~${Math.round(t.cal)} kcal · P ${round(t.protein)}g</p>${r.foods.slice(0,5).map(f=>'<p>• '+safe(f.name)+' ('+safe(f.meal)+')</p>').join('')}</div><div class="item"><b>Sleep</b><p>${r.sleep?Math.floor(r.sleep.minutes/60)+'h '+r.sleep.minutes%60+'m · Energy '+(r.sleep.energy||'—')+'/5':'No sleep record'}</p></div><div class="item"><b>Mobility & habits</b><p>${r.mobility?.done?'Routine complete':'Routine not marked complete'} · Water: ${r.water||0} ml</p></div><div class="item"><b>Steps & walking</b><p>${r.steps?.total!==null&&r.steps?.total!==undefined?Number(r.steps.total).toLocaleString()+' phone steps':'No phone step total'} · ${(r.steps?.sessions||[]).length} walking sessions</p></div><div class="item"><b>Journal</b><p>${r.journal?'Entry saved'+(r.journal.mood?' · '+safe(r.journal.mood):''):'No entry'}</p>${r.journal?.win?'<p>Win: '+safe(r.journal.win)+'</p>':''}</div><div class="row"><button class="btn small" onclick="openDateInJournal('${selectedDate}')">Open journal</button><button class="btn small" onclick="openDateInWorkout('${selectedDate}')">Open workout</button></div>`}
+function openDateInJournal(k){document.getElementById('journalDate').value=k;showSection('journal');loadJournalDate()}
+function openDateInWorkout(k){document.getElementById('workoutDate').value=k;showSection('workout');renderWorkout()}
+function last7(){return Array.from({length:7},(_,i)=>offsetDate(today(),i-6))}
+function drawChart(id,values,labels,suffix='',maxOverride=null){let c=document.getElementById(id);if(!c)return;let rect=c.getBoundingClientRect(),w=Math.max(260,rect.width||300),h=170,dpr=window.devicePixelRatio||1;c.width=w*dpr;c.height=h*dpr;let ctx=c.getContext('2d');ctx.scale(dpr,dpr);ctx.clearRect(0,0,w,h);let pad={l:12,r:8,t:12,b:28},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b,max=maxOverride||Math.max(1,...values.filter(v=>v!==null));ctx.strokeStyle=getComputedStyle(document.body).getPropertyValue('--line');ctx.fillStyle=getComputedStyle(document.body).getPropertyValue('--muted');ctx.font='11px system-ui';for(let i=0;i<4;i++){let y=pad.t+ch*i/3;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(w-pad.r,y);ctx.stroke()}let slot=cw/values.length,bw=Math.min(22,slot*.55),accent=getComputedStyle(document.body).getPropertyValue('--accent');values.forEach((v,i)=>{let x=pad.l+slot*i+(slot-bw)/2;if(v!==null&&v!==undefined){let bh=Math.max(0,ch*Math.min(1,v/max));ctx.fillStyle=accent;ctx.beginPath();ctx.roundRect?ctx.roundRect(x,pad.t+ch-bh,bw,bh,5):ctx.rect(x,pad.t+ch-bh,bw,bh);ctx.fill()}ctx.fillStyle=getComputedStyle(document.body).getPropertyValue('--muted');ctx.textAlign='center';ctx.fillText(labels[i],x+bw/2,h-8);if(v!==null&&v!==undefined){ctx.fillStyle=getComputedStyle(document.body).getPropertyValue('--text');ctx.fillText(String(v)+suffix,x+bw/2,Math.max(10,pad.t+ch-Math.max(0,ch*Math.min(1,v/max))-5))}})}
+function renderProgress(){let keys=last7(),labels=keys.map(k=>fmtDate(k,{weekday:'short'})),rs=keys.map(dayRecord);drawChart('stepChart',rs.map(r=>r?.steps?.total??null),labels,'',Math.max(1,...rs.map(r=>r?.steps?.total||0)));let stepKeys=Object.keys(db.records).filter(k=>db.records[k]?.steps?.total!==null&&db.records[k]?.steps?.total!==undefined).sort().reverse().slice(0,30);document.getElementById('stepHistory').innerHTML=stepKeys.length?stepKeys.map(k=>`<div class="item between"><b>${fmtDate(k,{month:'short',day:'numeric',year:'numeric'})}</b><span>${Number(db.records[k].steps.total).toLocaleString()} steps</span></div>`).join(''):'<div class="empty">No step history yet. Save your phone total on the dashboard.</div>';drawChart('workoutChart',rs.map(r=>r?.workout?.done?1:r?.workout?.rest?0:null),labels,'',1);drawChart('sleepChart',rs.map(r=>r?.sleep?Math.round(r.sleep.minutes/60*10)/10:null),labels,'h',12);drawChart('energyChart',rs.map(r=>r?.sleep?.energy?Number(r.sleep.energy):r?.checkin?.energy?Number(r.checkin.energy):null),labels,'',5);drawChart('foodChart',rs.map(r=>r?.foods?.length??null),labels,'',Math.max(1,...rs.map(r=>r?.foods?.length||0)));let history=Object.keys(db.records).filter(k=>{let r=db.records[k];return !!(r.workout?.done||r.workout?.rest||r.mobility?.done||r.sleep||r.foods?.length||r.journal||r.checkin||r.steps?.total!==null&&r.steps?.total!==undefined||!!r.steps?.sessions?.length||Object.values(r.habits||{}).some(Boolean)||(r.measurements||[]).length)}).sort().reverse().slice(0,20);document.getElementById('historyList').innerHTML=history.length?history.map(k=>{let r=db.records[k],t=calcFoods(k);let bits=[];if(r.workout?.done)bits.push('Workout complete');if(r.workout?.rest)bits.push('Recovery day');if(r.mobility?.done)bits.push('Mobility');if(r.sleep)bits.push('Sleep '+Math.floor(r.sleep.minutes/60)+'h '+r.sleep.minutes%60+'m');if(r.foods?.length)bits.push(r.foods.length+' food entries');if(r.journal)bits.push('Journal');if(r.steps?.total!==null&&r.steps?.total!==undefined)bits.push(Number(r.steps.total).toLocaleString()+' steps');if(r.steps?.sessions?.length)bits.push(r.steps.sessions.length+' walks');return `<div class="item"><div class="between"><b>${fmtDate(k,{month:'short',day:'numeric',year:'numeric'})}</b><span class="tiny muted">${bits.length} record types</span></div><p>${safe(bits.join(' · ')||'Check-in / habit data')}</p>${r.foods?.length?`<p>Estimated nutrition: ${Math.round(t.cal)} kcal · protein ${round(t.protein)}g · carbs ${round(t.carbs)}g · fat ${round(t.fat)}g</p>`:''}<button class="btn small" onclick="selectCalendarDate('${k}');showSection('calendar')">View date</button></div>`}).join(''):'<div class="empty">No saved records yet. Your history will appear as you use FitTrack.</div>';let measures=Object.entries(db.records).flatMap(([k,r])=>(r.measurements||[]).map(m=>({...m,date:m.date||k}))).sort((a,b)=>b.date.localeCompare(a.date));document.getElementById('measureHistory').innerHTML=measures.length?measures.map(m=>`<div class="item"><b>${safe(m.date)}</b><p>${m.push!==undefined?'Push-ups '+m.push+' · ':''}${m.squat!==undefined?'Squats '+m.squat+' · ':''}${m.plank!==undefined?'Plank '+m.plank+' sec · ':''}${m.weight?'Weight '+m.weight+' · ':''}${m.height?'Height '+m.height+' cm':''}${m.energy?' · Energy '+m.energy+'/5':''}</p></div>`).join(''):'<div class="empty">No optional measurements saved.</div>'}
+const FITTRACK_THEMES=['navy','light','forest','rose','ocean','crimson','ruby','ember','cherry','bloodmoon','carbon','sunset','gold','arctic','midnight','mint','lavender','amethyst','copper','neon','sand','slate','lime','plum','teal'];
+function pickRandomTheme(exclude=''){let choices=FITTRACK_THEMES.filter(t=>t!==exclude);return choices[Math.floor(Math.random()*choices.length)]||'navy'}
+function applyAutomaticTheme(){let mode=db.themeMode||'manual',day=today();if(mode==='open'){db.theme=pickRandomTheme(db.theme||'');}else if(mode==='daily'&&db.themeAutoDate!==day){db.theme=pickRandomTheme(db.theme||'');db.themeAutoDate=day;}document.body.dataset.theme=db.theme||'navy';save()}
+function setThemeMode(mode){db.themeMode=mode;if(mode==='open'){db.theme=pickRandomTheme(db.theme||'');}else if(mode==='daily'){db.themeAutoDate='';applyAutomaticTheme()}document.body.dataset.theme=db.theme||'navy';document.getElementById('themeSelect').value=db.theme||'navy';document.getElementById('themeModeSelect').value=mode;save();toast(mode==='open'?'Theme will change each time you open FitTrack':mode==='daily'?'Theme will change once per day':'Manual theme selected')}
+function setTheme(theme){db.theme=theme;db.themeMode='manual';document.body.dataset.theme=theme;document.getElementById('themeSelect').value=theme;if(document.getElementById('themeModeSelect'))document.getElementById('themeModeSelect').value='manual';save()}
+function loadSettings(){refreshCapabilities();document.getElementById('themeSelect').value=db.theme||'navy';document.getElementById('themeModeSelect').value=db.themeMode||'manual';document.getElementById('reminderSettings').innerHTML=Object.entries(db.reminders).map(([k,v])=>`<div class="item"><div class="between"><b>${({workout:'Workout',food:'Food logging',water:'Water logging',sleep:'Evening sleep check-in',journal:'Journal'})[k]}</b><label><input type="checkbox" id="rem_${k}_on" style="width:auto;min-height:0" ${v.enabled?'checked':''}> Enabled</label></div><div class="fields"><div class="field"><label>Time</label><input type="time" id="rem_${k}_time" value="${safe(v.time)}"></div></div></div>`).join('');document.getElementById('editableRhythm').innerHTML=db.rhythm.map((x,i)=>`<div class="fields"><div class="field"><label>Activity</label><input id="rhythmLabel${i}" value="${safe(x[0])}" maxlength="70"></div><div class="field"><label>Time</label><input id="rhythmTime${i}" type="time" value="${safe(x[1])}"></div></div>`).join('');}
+function saveSettings(){save();toast('Preferences saved')}
+function saveReminders(){for(let k of Object.keys(db.reminders)){db.reminders[k].enabled=document.getElementById('rem_'+k+'_on').checked;db.reminders[k].time=document.getElementById('rem_'+k+'_time').value}save();toast('Reminder preferences saved')}
+function saveRhythm(){db.rhythm=db.rhythm.map((x,i)=>[document.getElementById('rhythmLabel'+i).value,document.getElementById('rhythmTime'+i).value]);save();renderRhythm();toast('Daily rhythm saved')}
+function renderRhythm(){document.getElementById('rhythmList').innerHTML=db.rhythm.map(x=>`<div class="item between"><b>${safe(x[0])}</b><span class="pill">${safe(x[1])}</span></div>`).join('')}
+function exportBackup(){let blob=new Blob([JSON.stringify({app:'FitTrack',version:2,exportedAt:new Date().toISOString(),data:db},null,2)],{type:'application/json'});let url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='FitTrack-backup-'+today()+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('Backup export started')}
+function importBackup(event){let file=event.target.files?.[0];if(!file)return;let reader=new FileReader();reader.onload=()=>{try{let obj=JSON.parse(reader.result);let incoming=obj.data||obj;if(!incoming.records||typeof incoming.records!=='object')throw Error('This file does not look like a FitTrack backup.');if(!confirm('Import backup? This replaces the current FitTrack data in this browser. Export your current data first if you need it.'))return;db=incoming;normalize();save();document.body.dataset.theme=db.theme||'navy';refreshAll();toast('Backup imported')}catch(e){alert('Import failed: '+e.message)}finally{event.target.value=''}};reader.readAsText(file)}
+function confirmReset(){document.getElementById('modalroot').innerHTML=`<div class="modalback"><div class="modal"><h2>Reset FitTrack data?</h2><p>This permanently clears the FitTrack data stored in this browser. Export a backup first if you may need it.</p><div class="row" style="margin-top:18px"><button class="btn danger" onclick="doReset()">Reset data</button><button class="btn" onclick="document.getElementById('modalroot').innerHTML=''">Cancel</button></div></div></div>`}
+function doReset(){db=fresh();save();document.body.dataset.theme=db.theme;document.getElementById('modalroot').innerHTML='';refreshAll();toast('FitTrack data reset')}
+function refreshAll(){initNav();renderFocus();refreshCapabilities();renderDashboard();renderWalkTimer();renderWorkout();renderWaterLogs();renderWeeklyPlan();renderMobility();renderFaceCare();renderSleep();renderNutrition();renderProgress();renderCalendar();renderJournal();renderRhythm();loadSettings();document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav==='dashboard'))}
+function logSessionStart(){try{if(!sessionStorage.getItem('ftSessionStart'))sessionStorage.setItem('ftSessionStart',String(Date.now()))}catch(e){}}
+function setupReminderHonesty(){/* Standalone reminders are preferences only; no background delivery is claimed. */}
+// PWA install and offline support. This does not change FitTrack's existing local data schema.
+let fitTrackInstallPrompt=null;
+function updatePwaUI(){const installed=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;const secure=window.isSecureContext;const status=document.getElementById('pwaStatus'),help=document.getElementById('pwaHelp'),detail=document.getElementById('pwaDetail'),btn=document.getElementById('pwaInstallCardBtn'),headerBtn=document.getElementById('installAppBtn');if(!status)return;if(installed){status.textContent='Installed';help.textContent='FitTrack is running in its app window. You can open it from your home screen.';detail.textContent='Your records are stored locally in this browser profile. Keep exporting backups regularly.';btn.textContent='App installed';btn.disabled=true;headerBtn.hidden=true;}else if(!secure){status.textContent='Setup needed';help.textContent='To install FitTrack as an app, it must be opened from a secure HTTPS website or localhost.';detail.textContent='The downloaded HTML file still works, but browser PWA installation and service-worker offline caching require HTTPS or localhost.';btn.textContent='Installation setup';btn.disabled=false;headerBtn.hidden=true;}else if(fitTrackInstallPrompt){status.textContent='Ready to install';help.textContent='FitTrack can be added to your Android home screen as an app.';detail.textContent='Tap Install FitTrack and confirm the browser prompt.';btn.textContent='Install FitTrack';btn.disabled=false;headerBtn.hidden=false;}else{status.textContent='Browser menu';help.textContent='If the install button is not available yet, use Chrome’s menu to install or add FitTrack to your home screen.';detail.textContent='Open the page in Chrome, tap ⋮, then choose Install app or Add to Home screen (the wording may vary).';btn.textContent='Installation help';btn.disabled=false;headerBtn.hidden=true;}}
+async function installFitTrack(){if(fitTrackInstallPrompt){fitTrackInstallPrompt.prompt();try{await fitTrackInstallPrompt.userChoice;}catch(e){}fitTrackInstallPrompt=null;updatePwaUI();return;}showPwaHelp();}
+function showPwaHelp(){const secure=window.isSecureContext;alert(secure?'In Chrome on Android: tap the three-dot menu (⋮), then choose “Install app” or “Add to Home screen”. The wording depends on Chrome version.':'First open the FitTrack PWA package from an HTTPS website or localhost. A file opened directly from Downloads cannot register a service worker or be installed as a full offline PWA.');}
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();fitTrackInstallPrompt=e;updatePwaUI();});
+window.addEventListener('appinstalled',()=>{fitTrackInstallPrompt=null;updatePwaUI();toast('FitTrack installed on this device');});
+window.addEventListener('online',updatePwaUI);window.addEventListener('offline',updatePwaUI);
+if('serviceWorker'in navigator&&window.isSecureContext){window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').then(()=>{const d=document.getElementById('pwaDetail');if(d&&!window.matchMedia('(display-mode: standalone)').matches)d.textContent='Offline app support is enabled. Visit once while online so the app shell can be cached.';}).catch(()=>{const d=document.getElementById('pwaDetail');if(d)d.textContent='Offline caching could not start in this browser. FitTrack can still work while this page remains available.';});});}
+function init(){updatePwaUI();applyAutomaticTheme();initNav();renderFocus();refreshCapabilities();document.addEventListener('keydown',handleMaxKeys);setInterval(checkInPageReminders,30000);setInterval(tickFocus,500);document.getElementById('voiceSupportNote').textContent=(window.SpeechRecognition||window.webkitSpeechRecognition?'Voice input is available in this browser when microphone permission is granted.':'Voice input is not available in this browser; type commands instead.')+' Commands and insights stay on this device.';document.getElementById('workoutDate').value=today();renderDashboard();renderWorkout();renderWaterLogs();renderWeeklyPlan();renderMobility();renderSleep();renderNutrition();renderProgress();renderCalendar();renderJournal();renderRhythm();loadSettings();logSessionStart();window.addEventListener('resize',()=>{if(document.getElementById('progress').classList.contains('active'))renderProgress()});setInterval(()=>{let input=document.getElementById('workoutDate');if(input&&input.value){let r=dayRecord(input.value);if(r?.workout?.startedAt&&!r.workout.endedAt)renderWorkoutSession(r)}},30000);}
+init();
+</script>
+ </body>
+</html>
