@@ -1,5 +1,5 @@
-/* FitTrack offline app shell. Version the cache name when shipping a new release. */
-const CACHE_NAME = 'fittrack-pwa-v2';
+/* FitTrack Nexus offline app shell. Version the cache name when shipping a new release. */
+const CACHE_NAME = 'fittrack-nexus-v1';
 const APP_SHELL = [
   './',
   './index.html',
@@ -16,7 +16,7 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(key => key.startsWith('fittrack-pwa-') && key !== CACHE_NAME).map(key => caches.delete(key))))
+      .then(keys => Promise.all(keys.filter(key => (key.startsWith('fittrack-pwa-') || key.startsWith('fittrack-nexus-')) && key !== CACHE_NAME).map(key => caches.delete(key))))
       .then(() => self.clients.claim())
   );
 });

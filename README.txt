@@ -1,29 +1,65 @@
-FITTRACK PWA — FREE INSTALLABLE WEB APP PACKAGE
+FITTRACK NEXUS — YOUR PERSONAL LIFE SYSTEM
+Complete rebranded PWA release · 20 November 2026
 
-FILES
-- index.html: FitTrack application
-- manifest.webmanifest: install metadata and app icon references
-- sw.js: offline app-shell cache
-- icon-*.png: app icons
+WHAT'S INCLUDED
+- Existing FitTrack application, with its existing features and layouts retained.
+- Rebranded FitTrack Nexus name, browser metadata and new app icons.
+- Existing local-first fitness, nutrition, sleep, journal, calendar and progress features.
+- Home, Planner, Study, Wellness and More destinations, plus Finance and Notes modules already present in the supplied app.
+- Offline-first PWA shell and service worker.
+- Supabase schema and bootstrap-owner Edge Function scaffold in the correct folder structure.
+- Existing localStorage key preserved: fittrack_standalone_v1.
 
-IMPORTANT
-A Progressive Web App must be opened from HTTPS or localhost. Opening index.html directly from the Downloads folder (file://) will still run the app, but browsers do not allow service-worker registration or full PWA installation from file://.
+IMPORTANT: FRONTEND VS BACKEND
+GitHub Pages serves the static frontend (index.html, manifest.webmanifest, icons and sw.js). It does not run Supabase Edge Functions or execute Deno TypeScript. Supabase is a separate hosted backend. The frontend's local-first features remain usable without Supabase; backend features described as future/configuration-dependent are not activated merely by uploading this repository.
 
-FREE ANDROID INSTALL (HOSTED)
-1. Keep all files in this folder together.
-2. Publish this folder using a free static HTTPS host, for example GitHub Pages.
-3. Open the published HTTPS address in Chrome on Android.
-4. Visit once while online so the service worker can cache the app shell.
-5. Use Chrome menu (⋮) > Install app or Add to Home screen.
+GITHUB REPOSITORY LAYOUT
+Upload the CONTENTS of this folder to the ROOT of the new GitHub repository. Do not upload the outer ZIP folder as an extra nesting level.
 
-LOCAL DATA
-FitTrack keeps its existing localStorage key: fittrack_standalone_v1. Existing data is not uploaded. Browser storage may be isolated between the old file:// copy and the hosted PWA. Before switching, export a FitTrack backup from the old version and import it into the PWA copy. Keep exporting backups regularly.
+index.html
+manifest.webmanifest
+sw.js
+icon-192.png
+icon-512.png
+icon-512-maskable.png
+supabase/schema.sql
+supabase/functions/bootstrap-owner/index.ts
 
-NO PAID SERVICE IS REQUIRED BY THIS PACKAGE. Hosting provider terms and free-tier limits can change. Voice input and notifications depend on browser support and permissions. The service worker caches the app shell, not external services.
+SUPABASE SETUP
+1. Create a Supabase project.
+2. In the Supabase SQL Editor, review and run supabase/schema.sql.
+3. Deploy supabase/functions/bootstrap-owner as an Edge Function using the Supabase CLI or supported deployment workflow.
+4. Configure required server-side secrets in Supabase, not in this repository: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY and FITTRACK_OWNER_BOOTSTRAP_SECRET.
+5. Never commit service-role keys, bootstrap secrets, OAuth client secrets or private credentials to GitHub or browser JavaScript.
+6. Review the Edge Function and database row-level security policies before using real accounts or private data.
 
+GITHUB PAGES
+1. Create a new repository named: FitTrack-Nexus (or your chosen repository slug).
+2. Upload the contents of this folder to the repository root.
+3. Open Settings → Pages. Choose Deploy from a branch, branch main, folder /(root), then Save.
+4. Wait for the Pages deployment to finish, then open the published HTTPS URL.
+5. Test the website in a normal browser before installing the PWA.
 
-UPDATING THE APP
-- To publish a new version, replace index.html and sw.js in the GitHub repository with the updated files and commit the changes.
-- The service-worker cache version is bumped for this release so the new app shell can be downloaded.
-- Reopen the installed app while online. If the old screen remains, close it fully and reopen; the service worker may need a moment to activate.
-- Existing local records use the same localStorage key. Do not change it when updating.
+DATA PRESERVATION
+- The existing localStorage key fittrack_standalone_v1 is intentionally unchanged.
+- The app's existing local records remain in the browser profile where they were created; GitHub or a new repository does not transfer them.
+- Export a backup from the existing app before upgrading or moving devices.
+- Do not clear browser/site storage or uninstall the old app until the new release is tested and a backup is safely stored.
+- The service worker cache is separate from localStorage records. This release uses a new cache namespace, fittrack-nexus-v1.
+
+OFFLINE AND UPDATES
+- Visit the HTTPS Pages URL once while online so the app shell can be cached.
+- The service worker uses a network-first strategy for page navigation and cached assets as an offline fallback.
+- On a new release, increment CACHE_NAME in sw.js (for example fittrack-nexus-v2).
+- Test an update in Chrome before replacing the installed app. Never delete localStorage to solve a cache issue.
+
+TEST CHECKLIST
+- Confirm the deployed site shows FitTrack Nexus and the new icon.
+- Test the main navigation and existing fitness/wellness tools.
+- Export a backup and confirm the file downloads.
+- Test offline launch after one successful online visit.
+- Test on Android Chrome and desktop Chrome.
+- Configure and security-review Supabase separately before enabling backend account features.
+
+SCOPE NOTE
+This is a rebrand and packaging update, not a redesign or a claim that all future AI, account, cloud-sync, payment, passkey or multi-user features are live. Existing application behavior is retained; Supabase-dependent capabilities require separate implementation, deployment and security review.
