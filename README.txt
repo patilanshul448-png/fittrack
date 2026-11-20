@@ -20,3 +20,10 @@ LOCAL DATA
 FitTrack keeps its existing localStorage key: fittrack_standalone_v1. Existing data is not uploaded. Browser storage may be isolated between the old file:// copy and the hosted PWA. Before switching, export a FitTrack backup from the old version and import it into the PWA copy. Keep exporting backups regularly.
 
 NO PAID SERVICE IS REQUIRED BY THIS PACKAGE. Hosting provider terms and free-tier limits can change. Voice input and notifications depend on browser support and permissions. The service worker caches the app shell, not external services.
+
+
+UPDATING THE APP
+- To publish a new version, replace index.html and sw.js in the GitHub repository with the updated files and commit the changes.
+- The service-worker cache version is bumped for this release so the new app shell can be downloaded.
+- Reopen the installed app while online. If the old screen remains, close it fully and reopen; the service worker may need a moment to activate.
+- Existing local records use the same localStorage key. Do not change it when updating.
